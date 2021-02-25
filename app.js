@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 const mailGun = require('nodemailer-mailgun-transport');
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 // middleware 
 app.use(bodyParser.json());
