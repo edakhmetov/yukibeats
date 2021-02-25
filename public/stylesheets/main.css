@@ -673,7 +673,7 @@ textarea.contact-form-control {
     .logo {
         width: 100%;
         font-size: 4rem;
-        text-align: left;
+        /* text-align: left; */
         display: flex;
         justify-content: space-between;
         align-items: center;
