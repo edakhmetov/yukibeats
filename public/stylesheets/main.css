@@ -1,0 +1,726 @@
+html {
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* position: relative; */
+    height: 100%;
+}
+
+h1 {
+    /* font-size: 4.5rem; */
+    font-weight: lighter;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    /* font-family: 'Gafata', sans-serif; */
+	font-family: 'Bungee Shade', cursive;
+    font-size: 3rem;
+    flex: 1.5;
+}
+
+.nav-links li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* width: 150px; */
+	/* height: 50px; */
+	transition: 0.5s;
+}
+
+.nav-links li:hover {
+	transition: 0.5s;
+	background-color: rgba(255, 150, 66, 0.7);
+	border-radius: 25px;
+}
+
+.hamburger {
+	/* position: absolute;
+	top: 2rem;
+	right: 2rem; */
+	/* margin-top: 4rem; */
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 37px;
+	height: 17px;
+}
+
+.hamburger span {
+	height: 3px;
+	width: 100%;
+	background-color: black;
+	border-radius: 10px;
+	transition: all 0.3s ease;
+}
+
+.toggle .line1 {
+	transform: rotate(-45deg) translate(-5px, 5px)
+}
+.toggle .line2 {
+	opacity: 0;
+}
+.toggle .line3 {
+	transform: rotate(45deg) translate(-5px, -5px)
+}
+
+a:active, a:focus {
+	box-shadow: none;
+  outline: none;
+  -moz-outline-style: none;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+nav {
+    display: flex;
+    /* min-height: 6vh; */
+	min-height: 10vh;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    flex: 3;
+	font-size: 5.5rem;
+    /* font-family: 'Covered By Your Grace', cursive; */
+	font-family: 'Bungee Shade', cursive;
+    /* text-shadow: 3px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15); */
+}
+
+main {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+
+.main {
+    /* min-height: 100%; */
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+h2 {
+    font-size: 3.4rem;
+    font-family: 'Gafata', sans-serif;
+}
+
+.description {
+    font-size: 2rem;
+    margin: 6rem 0;
+    font-family: 'Gafata', sans-serif;
+}
+
+.contactText {
+    font-size: 1.7rem;
+    font-family: 'Gafata', sans-serif;
+}
+
+.about {
+    /* height: 100%; */
+    width: 50%;
+    margin: auto 0;
+    /* margin-bottom: 14%; */
+    text-align: center;
+}
+
+.music {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    max-height: 45rem;
+    margin: auto 0;
+    align-items: center;
+    font-family: 'Gafata', sans-serif;
+    overflow-y: auto;
+}
+
+.music {
+  overflow: auto;
+  background: /* Shadow covers */
+  linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
+  radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+  background: /* Shadow covers */
+  linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
+  radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll;
+}
+
+.music::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+.music {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.songContainer {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 1.5rem 0;
+    padding-left: 4rem;
+}
+
+.songInfo {
+    display: flex;
+    width: 100%;
+    /* justify-content: space-between; */
+    font-size: 1.8rem;
+    padding-left: 15%;
+}
+
+/* .name, .time, .rate {
+	width: 33%;
+} */
+.name {
+	text-align: center;
+	width: 40%;
+}
+.time {
+	text-align: right;
+	width: 30%;
+}
+.rate {
+	text-align: right;
+	width: 30%;
+}
+
+.songPlayer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.playBtn {
+    margin: auto;
+    /* margin-left: 4rem; */
+    background-color: #fff;
+    outline: none;
+    min-width: 55px;
+    min-height: 55px;
+    font-size: 13px;
+    /* padding-left: 0.2rem; */
+    border: 1px black solid;
+    border-radius: 50%;
+    /* box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0.5rem 0.8rem 0.3rem rgba(135, 135, 135, 0.25); */
+}
+
+.fa-play {
+    /* margin-left: 0.5rem; */
+}
+
+/* .controls {
+    position: relative;
+    width: 30%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    margin-left: 2rem;
+} */
+
+
+/* .volumebar {
+    width: 80%;
+} */
+
+hr {
+    margin-top: 1.5rem;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+/* .visualizer {
+    margin-top: auto;
+} */
+
+
+.footer-container {
+    background-color: black;
+    width: 100%;
+    min-height: 5vh;
+    /* min-height: 5vh; */
+    /* position: absolute; */
+    align-items: center;
+    /* margin-top: 250px; */
+    padding: 1rem 0;
+    /* bottom: 0; */
+    /* margin-top: auto; */
+}
+
+.footer {
+    width: 80%;
+    margin: auto;
+    color: rgb(245, 245, 245);
+    display: flex;
+    justify-content: space-between;
+}
+
+.rights {
+    display: flex;
+	flex-direction: column;
+    flex: 4;
+    font-size: 1.6rem;
+    font-family: 'Gafata', sans-serif;
+    font-weight: lighter;
+	pointer: none;
+    /* text-align: center;
+    align-items: center; */
+}
+
+.socialLinks {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    font-size: 3rem;
+	align-items: center;
+}
+
+.socialLink a{
+    padding: 0 1rem;
+	
+	/* font-size: 3.5rem; */
+
+    color: rgb(240, 240, 240);
+}
+
+a#soundcloud:hover {
+    color: #ff7700;
+}
+
+a#soundcloud {
+	/* transition: all 0.3s ease; */
+    font-size: 3.5rem;
+}
+
+a#instagram {
+	/* transition: all 0.3s ease; */
+    font-size: 3.5rem;
+}
+
+a#instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+	/* color: red; */
+}
+
+.seekbar {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    /* overflow: hidden; */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+    height: 5px; 
+    margin: auto;
+    margin-left: 2rem;
+    border-radius: 50px;
+    background: rgb(255, 150, 66);
+}
+  
+
+/* slide for chrome */
+.seekbar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -7px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */ */
+}
+
+/* slide for mozilla */
+.seekbar::-moz-range-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */ */
+}
+
+/* slide for ie */
+.seekbar::-ms-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */ */
+}
+
+.seekbar::-webkit-slider-runnable-track {
+    height: 5px;
+    cursor: pointer;
+    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+    color: rgb(255, 150, 66);
+    border-radius: 50px;
+    border: 0.2px solid #010101;
+}
+ 
+
+.seekbar::-webkit-slider-runnable-track {
+    height: 5px;
+    cursor: pointer;
+    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+    color: rgb(255, 150, 66);
+    border-radius: 50px;
+    border: 0.2px solid #010101;
+}
+
+.seekbar:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+.scroll {
+	display: none;
+	font-size: 3rem;
+	margin-bottom: 4rem;
+	width: 4rem;
+	height: 4rem;
+	color: rgb(255, 150, 66);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    /* -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent; */
+	border: none;
+	outline: none;
+}
+
+/* The switch - the box around the slider */
+.switch {
+	margin: auto;
+	margin-top: 10px;
+	position: relative;
+	display: flex;
+	width: 50px;
+	height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(255, 150, 66);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(255, 150, 66);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/* EMAIL CONTACT FORM CSS */
+.main.contact {
+	flex-direction: column;
+	align-items: center;
+	/* min-height: 60rem; */
+}
+
+.contact-form-class {
+    margin: 0;
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+    padding: 30px;
+    padding-bottom: 10px;
+    /* border: 1px solid #ced4da;
+    border-radius: 0.25rem; */
+    width: 60%;
+}
+
+.contact-form-group {
+    margin-bottom: 2rem;
+}
+
+
+.contact-label {
+	display: inline-block;
+    margin-bottom: 0.5rem;
+	font-size: 2rem;
+	font-family: 'Gafata', sans-serif;
+}
+
+.contact-input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+
+textarea.contact-form-control {
+	font-family: -apple-system, Arial, sans-serif;
+    height: 25rem;
+	padding-top: 1rem;
+	resize: none;
+	overflow: auto;
+	border-radius: 10px;
+}
+
+.contact-form-control {
+    display: block;
+    width: 100%;
+    height: 4.5rem;
+    padding: 0.375rem 2rem;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    outline: none;
+    border-radius: 10px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.contact-btn {
+	margin: auto;
+	font-family: 'Gafata', sans-serif;
+    background-color: rgba(255, 150, 66, 1);
+    outline: none;
+    width: 100%;
+    height: 4rem;
+    font-size: 2rem;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+	pointer-events: all;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+::-webkit-scrollbar-track {
+	/* background: #f5f5f5; */
+	border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 25px;
+	background: #ccc;  
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #999;  
+}
+
+/* ***************TEST********************* */
+/* .progress-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 150, 66, 1);
+    position: absolute;
+	bottom: 5vh;
+    z-index: 2;
+}
+
+.progress-container .progress {
+    width:  0;
+    height: 8px;
+    background: black;
+    z-index: 2;
+} */
+/* *********************END OF TEST******************** */
+
+@media screen and (max-width: 868px) {
+	.hamburger {
+		display: flex;
+	}
+	
+    .main {
+        flex-direction: column;
+    }
+	
+	.main.contact {
+		margin-top: 3.2rem;
+		width: 100%;
+	}
+	
+	.contact-form-class {
+		width: 90%;
+	}
+
+    .about {
+        width: 100%;
+        margin-top: 4rem;
+    }
+
+    .music {
+        width: 100%;
+        margin-top: 5rem;
+        max-height: 44rem;
+        /* max-height: 100%; */
+    }
+	
+	.scroll {
+		display: inline;
+	}
+	
+	
+    .logo {
+		width: 100%;
+		font-size: 4rem;
+        text-align: left;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+    }
+	
+	nav {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+    .nav-link{
+		width: 100%;
+		text-align: center;
+    }
+	
+	.nav-link a {
+		padding: .5rem 1rem;
+		width: 100%;
+	}
+	
+	.nav-links li {
+		width: 100%;
+	}
+	
+	.nav-links {
+		display: block;
+		width: 100%;
+		flex-direction: column;
+		font-size: 0;
+		pointer-events: none;
+		/* margin-bottom: 3rem; */
+	}
+	
+	.nav-links.active {
+		font-size: 3rem;
+		pointer-events: all;
+	}
+
+    .songContainer {
+        width: 100%;
+        max-height: 10rem;
+        padding: 0;
+        margin: 2rem 0;
+		padding-left: 0;
+    }
+	
+	.songInfo {
+		padding-left: 10%;
+	}
+	
+    .playBtn {
+        margin: 0;
+    }
+}
+
+/* @media screen and (min-width: 1920px) {
+	.music {
+		max-height: 80rem;
+	}
+} */

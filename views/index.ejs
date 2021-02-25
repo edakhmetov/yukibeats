@@ -1,0 +1,64 @@
+<%- include("partials/header") %>
+
+        <div class="main">
+            <section class="about">
+                <h2>Welcome to Yukibeats</h2>
+                <p class="description">Here is the collection of my beats that i made throughout the years. I started
+                    making
+                    beats back in 2014 using my oold iPhone 5 and the garageband app. Nowadays, im using FL studio with
+                    like
+                    a thousand of different plugins and shit is crazy.
+                    Make sure to check out my soundcloud and instagram
+                </p>
+				<button class="scroll">
+					<i class="fas fa-angle-double-down"></i>
+				</button>
+                <p class="contactText">if you like any of the beats presented on this website, make sure to contact me
+                    using
+                    email form or message me directly on Instagram.
+                </p>
+				<br>
+				<p class="contactText">
+					Toggle visualizer
+                </p>
+				<label class="switch">
+  					<input class="checkbox" type="checkbox">
+  					<span class="slider round"></span>
+				</label>
+            </section>
+            <section class="music">
+                <% audios.forEach(function(audio) { %> 
+                <div class="songContainer">
+                    <div class="songInfo">
+                        <div class="name"><%= audio.name %></div>
+                        <div class="time"><%= audio.duration %>  </div>
+                        <div class="rate">BPM: <%= audio.bpm %></div>
+                    </div>
+                    <div class="songPlayer">
+                        <audio class="audio" crossorigin="anonymous" src="<%= audio.source %>" type="<%= audio.type %>">
+                        </audio>
+                        <button class="playBtn"><i class="fas fa-play"></i></button>
+                        <input type="range" class="seekbar" value="0">
+                    </div>
+                    <hr>
+                </div>
+                <% }) %> 
+            </section>
+        </div>
+
+
+
+        <section class="visualizer">
+            <canvas height="200"></canvas>
+        </section>
+
+		<!-- <div id="progress-container" class="progress-container">
+            <div class="progress" id="progress"></div>
+        </div> -->
+
+        <%- include("partials/rights") %>
+
+    </main>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/iamdustan-smoothscroll/0.4.0/smoothscroll.min.js"></script>
+    <script src="/js/script.js"></script>
+<%- include("partials/footer") %>
