@@ -677,6 +677,7 @@ textarea.contact-form-control {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        text-align: center;
     }
     nav {
         flex-direction: column;
