@@ -100,6 +100,7 @@ nav {
     margin: auto;
     align-items: center;
     justify-content: space-between;
+    margin-top: 2rem;
 }
 
 .logo {
@@ -681,7 +682,6 @@ textarea.contact-form-control {
         justify-content: space-between;
         align-items: center;
         text-align: center;
-        margin-top: 1.5rem;
     }
     nav {
         /* flex-direction: column; */
