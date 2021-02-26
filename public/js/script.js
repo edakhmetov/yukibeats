@@ -9,6 +9,13 @@ const canvasContext = canvasElement.getContext('2d');
 
 const scroll = document.querySelector('.scroll');
 
+const lis = document.querySelectorAll('li.nav-link');
+
+lis.forEach((li, i) => {
+    let k = i + 1;
+    li.style.transition = `${0.3 * k}s`;
+});
+
 function getDocHeight() {
 	const D = document;
     return Math.max(

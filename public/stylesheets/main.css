@@ -35,7 +35,7 @@ h1 {
     justify-content: center;
     /* width: 150px; */
     /* height: 60px; */
-    transition: 0.5s;
+    /* transition: 0.5s; */
 }
 
 .nav-links li:hover {
@@ -143,18 +143,18 @@ html {
 
 h2 {
     font-size: 3.4rem;
-    font-family: 'Gafata', sans-serif;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .description {
-    font-size: 2rem;
+    font-size: 2.4rem;
     margin: 6rem 0;
-    font-family: 'Gafata', sans-serif;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .contactText {
-    font-size: 1.7rem;
-    font-family: 'Gafata', sans-serif;
+    font-size: 1.9rem;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .about {
@@ -172,7 +172,7 @@ h2 {
     max-height: 50rem;
     margin: auto 0;
     align-items: center;
-    font-family: 'Gafata', sans-serif;
+    font-family: 'Bebas Neue', cursive;
     overflow-y: auto;
 }
 
@@ -309,8 +309,9 @@ hr {
     flex-direction: column;
     flex: 4;
     font-size: 1.6rem;
-    font-family: 'Gafata', sans-serif;
+    font-family: 'Bebas Neue', cursive;
     font-weight: lighter;
+    letter-spacing: 2px;
     /* text-align: center;
     align-items: center; */
 }
@@ -554,7 +555,7 @@ input:checked+.slider:before {
     display: inline-block;
     margin-bottom: 0.5rem;
     font-size: 2rem;
-    font-family: 'Gafata', sans-serif;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .contact-input-group {
@@ -596,7 +597,7 @@ textarea.contact-form-control {
 
 .contact-btn {
     margin: auto;
-    font-family: 'Gafata', sans-serif;
+    font-family: 'Bebas Neue', cursive;
     background-color: rgba(255, 150, 66, 1);
     outline: none;
     width: 100%;
