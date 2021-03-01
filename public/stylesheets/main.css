@@ -11,6 +11,7 @@ html {
 body {
     /* position: relative; */
     height: 100%;
+    background-color: rgb(44, 44, 44);
 }
 
 h1 {
@@ -30,6 +31,7 @@ h1 {
 }
 
 .nav-links li {
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +82,7 @@ a:active, a:focus {
 }
 
 a {
-    color: black;
+    color: white;
     text-decoration: none;
     padding: 0 1rem;
 }
@@ -101,6 +103,7 @@ nav {
     font-size: 5.5rem;
     /* font-family: 'Covered By Your Grace', cursive; */
     font-family: 'Racing Sans One', cursive;
+    color: white;
     text-shadow: 2px 2px 0px #fff, 7px 6px 0px rgba(0,0,0,0.15);
 }
 
@@ -139,15 +142,18 @@ h2 {
     letter-spacing: 0.5px;
     /* font-family: 'Bebas Neue', cursive; */
     font-family: 'Anton', sans-serif;
+    color: white;
 }
 
 .description {
+    color: white;
     font-size: 2.4rem;
     margin: 6rem 0;
     font-family: 'Bebas Neue', cursive;
 }
 
 .contactText {
+    color: white;
     font-size: 1.9rem;
     font-family: 'Bebas Neue', cursive;
 }
@@ -174,13 +180,13 @@ h2 {
 .music {
     overflow: auto;
     background: /* Shadow covers */
-    linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
+    linear-gradient(rgb(44, 44, 44) 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), rgb(44, 44, 44) 70%) 0 100%, /* Shadows */
     radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
     background: /* Shadow covers */
-    linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
+    linear-gradient(rgb(44, 44, 44) 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), rgb(44, 44, 44) 70%) 0 100%, /* Shadows */
     radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
     background-repeat: no-repeat;
-    background-color: white;
+    background-color: rgb(44, 44, 44);
     background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
     /* Opera doesn't support this in the shorthand */
     background-attachment: local, local, scroll, scroll;
@@ -207,6 +213,7 @@ h2 {
 }
 
 .songInfo {
+    color: white;
     display: flex;
     width: 100%;
     /* justify-content: space-between; */
