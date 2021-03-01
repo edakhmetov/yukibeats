@@ -21,34 +21,27 @@ h1 {
 .nav-links {
     list-style: none;
     display: flex;
-    justify-content: space-between;
-    /* font-family: 'Gafata', sans-serif; */
-    font-family: 'Bungee Shade', cursive;
+    justify-content: flex-end;
+    font-family: 'Anton', sans-serif;
     font-size: 3rem;
-    /* flex: 1.5; */
+    /* flex: 1; */
     order: 2;
+    width: 100%;
 }
 
 .nav-links li {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* width: 150px; */
-    /* height: 60px; */
-    /* transition: 0.5s; */
 }
 
 .nav-links li:hover {
-    transition: 0.5s;
+    transition: 0.4s;
     background-color: rgba(255, 150, 66, 0.7);
-    border-radius: 17px;
+    border-radius: 20px;
 }
 
 .hamburger {
-    /* position: absolute;
-	top: 2rem;
-	right: 2rem; */
-    /* margin-top: 4rem; */
     order: 1;
     display: none;
     flex-direction: column;
@@ -142,8 +135,10 @@ html {
 }
 
 h2 {
-    font-size: 3.4rem;
-    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    letter-spacing: 0.5px;
+    /* font-family: 'Bebas Neue', cursive; */
+    font-family: 'Anton', sans-serif;
 }
 
 .description {
@@ -247,30 +242,14 @@ h2 {
 
 .playBtn {
     margin: auto;
-    /* margin-left: 4rem; */
     background-color: #fff;
     outline: none;
     min-width: 55px;
     min-height: 55px;
     font-size: 13px;
-    /* padding-left: 0.2rem; */
     border: 1px black solid;
     border-radius: 50%;
-    /* box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25), 0.5rem 0.8rem 0.3rem rgba(135, 135, 135, 0.25); */
 }
-
-/* .controls {
-    position: relative;
-    width: 30%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    margin-left: 2rem;
-} */
-
-/* .volumebar {
-    width: 80%;
-} */
 
 hr {
     margin-top: 1.5rem;
@@ -279,21 +258,12 @@ hr {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
-/* .visualizer {
-    margin-top: auto;
-} */
-
 .footer-container {
     background-color: black;
     width: 100%;
     min-height: 5vh;
-    /* min-height: 5vh; */
-    /* position: absolute; */
     align-items: center;
-    /* margin-top: 250px; */
     padding: 1rem 0;
-    /* bottom: 0; */
-    /* margin-top: auto; */
 }
 
 .footer {
@@ -312,8 +282,6 @@ hr {
     font-family: 'Bebas Neue', cursive;
     font-weight: lighter;
     letter-spacing: 2px;
-    /* text-align: center;
-    align-items: center; */
 }
 
 .socialLinks {
@@ -327,7 +295,6 @@ hr {
 
 .socialLink a {
     padding: 0 1rem;
-    /* font-size: 3.5rem; */
     color: rgb(240, 240, 240);
 }
 
@@ -336,12 +303,10 @@ a#soundcloud:hover {
 }
 
 a#soundcloud {
-    /* transition: all 0.3s ease; */
     font-size: 3.5rem;
 }
 
 a#instagram {
-    /* transition: all 0.3s ease; */
     font-size: 3.5rem;
 }
 
@@ -353,7 +318,6 @@ a#instagram:hover {
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-    /* color: red; */
 }
 
 .seekbar {
@@ -603,7 +567,7 @@ textarea.contact-form-control {
     width: 100%;
     height: 6rem;
     font-size: 3rem;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.5px;
     border: 1px solid #ced4da;
     border-radius: 10px;
     pointer-events: all;
