@@ -174,8 +174,7 @@ const renderVisualizer = function(audioID) {
 
                     for (let i = 0; i < (barsCount); i++) {
 						
-						barHeight = (agg[i] * 0.9);
-                        
+						barHeight = (agg[i] * 0.4);                        
                         let y = (HEIGHT - barHeight);
 
                         drawBar(canvasContext, x, y, barWidth, barHeight)
