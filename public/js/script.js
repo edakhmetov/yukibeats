@@ -141,7 +141,7 @@ const renderVisualizer = function(audioID) {
                 const agg = []; // reset array that holds aggregate sound data
 
                 canvasContext.clearRect(0, 0, WIDTH, HEIGHT) // clear canvas at each frame
-                canvasContext.fillStyle = 'rgb(44, 44, 44)';
+                canvasContext.fillStyle = '#fff';
                 canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
 				// const grd = canvasContext.createLinearGradient(0, 70, 0, 200);
 
