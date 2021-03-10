@@ -31,14 +31,19 @@
                 <div class="songContainer">
                     <div class="songInfo">
                         <div class="name"><%= audio.name %></div>
-                        <div class="time"><%= audio.duration %>  </div>
-                        <div class="rate">BPM: <%= audio.bpm %></div>
+                        <!-- <div class="time"><%= audio.duration %>  </div> -->
+                        <!-- <div class="rate">BPM: <%= audio.bpm %></div> -->
                     </div>
                     <div class="songPlayer">
                         <audio class="audio" crossorigin="anonymous" src="<%= audio.source %>" type="<%= audio.type %>">
                         </audio>
                         <button class="playBtn"><i class="fas fa-play"></i></button>
                         <input type="range" class="seekbar" value="0">
+                    </div>
+                    <div class="songInfo">
+                        <!-- <div class="name"><%= audio.name %></div> -->
+                        <!-- <div class="time"><%= audio.duration %>  </div> -->
+                        <div class="rate">BPM: <%= audio.bpm %></div>
                     </div>
                     <hr>
                 </div>

@@ -190,7 +190,7 @@ const renderVisualizer = function(audioID) {
                     function drawBar(canvasContext, x, y, barWidth, barHeight) {
                         let currentPos = audios[audioID].currentTime / audios[audioID].duration;
                         if (x / WIDTH >= currentPos) {
-                            canvasContext.fillStyle = `rgb(255, 150, 66)`;
+                            canvasContext.fillStyle = `#e3784d`;
                         } else {
                             canvasContext.fillStyle = `rgb(100, 100, 100)`;
                         }
@@ -239,7 +239,7 @@ audios.forEach(function (audio, i) {
     // update progress with music
     let setProgress = function () {
         seekbar.value = audio.currentTime;
-        seekbar.style.background = 'linear-gradient(to right, rgb(100, 100, 100), rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, rgb(255, 150, 66) ' + (seekbar.value / audio.duration) * 100 + '%, rgb(255, 150, 66))';
+        seekbar.style.background = 'linear-gradient(to right, rgb(100, 100, 100), rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d)';
     };
 
     // update the seekbar when user touches
