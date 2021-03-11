@@ -11,16 +11,10 @@
 
 .music 
     overflow: auto
-    background:
-    linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
-    radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%
-    background:
-    linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
-    radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%
+    background: linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%
     background-repeat: no-repeat
     background-color: white
     background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px
-    /* Opera doesn't support this in the shorthand */
     background-attachment: local, local, scroll, scroll
 
 
@@ -28,13 +22,9 @@
     display: none
 
 
-/* Hide scrollbar for IE, Edge and Firefox */
-
 .music 
     -ms-overflow-style: none
-    /* IE and Edge */
     scrollbar-width: none
-    /* Firefox */
 
 
 .songContainer 
@@ -48,9 +38,6 @@
 .songInfo 
     display: flex
     width: 100%
-    /* justify-content: space-between */
-    /* font-size: 2.7rem */
-    /* padding-left: 15% */
 
 
 .name 
@@ -61,7 +48,6 @@
 
 .rate 
     text-align: center
-    /* margin-left: ; */
     width: 40%
     font-size: 2.3rem
 
@@ -87,16 +73,14 @@
     border-radius: 50%
 
 
-hr 
+hr
     margin-top: 1.5rem
     border: 0
     height: 1px
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))
 
-.time 
-    /* margin-left: 2rem; */
+.time
     position: absolute
-    /* text-align: right; */
     top: 10
     left: 28%
     width: 20px
@@ -104,20 +88,16 @@ hr
 
 .seekbar 
     -webkit-appearance: none
-    /* Hides the slider so that custom slider can be made */
-    /* overflow: hidden; */
+    // Hides the slider so that custom slider can be made
+    // overflow: hidden
     width: 100%
-    /* Specific width is required for Firefox. */
     background: transparent
-    /* Otherwise white in Chrome */
     height: 15px
     margin: auto
     margin-left: 2rem
     border-radius: 50px
     background: #e3784d
 
-
-/* slide for chrome */
 
 .seekbar::-webkit-slider-thumb 
     -webkit-appearance: none
@@ -128,12 +108,8 @@ hr
     background: #ffffff
     cursor: pointer
     margin-top: -7px
-    /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
-    /* Add cool effects to your sliders! */
+    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
 
-
-/* slide for mozilla */
 
 .seekbar::-moz-range-thumb 
     -webkit-appearance: none
@@ -143,11 +119,7 @@ hr
     border-radius: 50%
     background: #ffffff
     cursor: pointer
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
-    /* Add cool effects to your sliders! */
-
-
-/* slide for ie */
+    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
 
 .seekbar::-ms-thumb 
     -webkit-appearance: none
@@ -157,27 +129,45 @@ hr
     border-radius: 50%
     background: #ffffff
     cursor: pointer
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
-    /* Add cool effects to your sliders! */
+    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
 
 
 .seekbar::-webkit-slider-runnable-track 
     height: 5px
     cursor: pointer
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
     color: #e3784d
     border-radius: 50px
-    /* border: 0.2px solid #010101; */
+    // border: 0.2px solid #010101
 
 
 .seekbar::-webkit-slider-runnable-track 
     height: 5px
     cursor: pointer
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
     color: rgb(255, 150, 66)
     border-radius: 50px
-    /* border: 0.2px solid #010101; */
+    // border: 0.2px solid #010101
 
 .seekbar:focus 
     outline: none
-    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+
+@media screen and (max-width: 868px)
+    .music
+        width: 100%
+        margin-top: 5rem
+        max-height: 44rem
+        //max-height: 100%
+
+    .songContainer
+        width: 100%
+        /* max-height: 10rem; */
+        padding: 0
+        margin: 2rem 0
+        padding-left: 0
+
+    .songInfo
+        padding-left: 10%
+
+    .playBtn
+        margin: 0

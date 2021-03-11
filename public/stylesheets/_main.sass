@@ -1,40 +1,32 @@
 @import 'music'
 @import 'slider'
 
+
+html
+    font-size: 62.5%
+    -ms-overflow-style: none
+    scrollbar-width: none
+
+body
+    height: 100%
+    overflow-x: hidden
+    &::-webkit-scrollbar 
+        display: none
+
 main 
     display: flex
     min-height: 100%
     flex-direction: column
 
-
-.main 
-    /* min-height: 100%; */
+.main
     display: flex
     width: 80%
     margin: auto
 
 
-body 
-    overflow-x: hidden
-
-
-body::-webkit-scrollbar 
-    display: none
-
-
-/* Hide scrollbar for IE, Edge and Firefox */
-
-html 
-    -ms-overflow-style: none
-    /* IE and Edge */
-    scrollbar-width: none
-    /* Firefox */
-
-
 h2 
     font-size: 3rem
     letter-spacing: 0.5px
-    /* font-family: 'Bebas Neue', cursive; */
     font-family: 'Anton', sans-serif
 
 
@@ -50,10 +42,8 @@ h2
 
 
 .about 
-    /* height: 100%; */
     width: 40%
     margin: auto 0
-    /* margin-bottom: 14%; */
     text-align: center
 
 .scroll 
@@ -67,7 +57,18 @@ h2
     background-clip: text
     -webkit-background-clip: text
     -moz-background-clip: text
-    /* -webkit-text-fill-color: transparent */
-    /*-moz-text-fill-color: transparent */
+    // -webkit-text-fill-color: transparent
+    //-moz-text-fill-color: transparent
     border: none
     outline: none
+
+@media screen and (max-width: 868px)
+    .main
+        flex-direction: column
+
+    .about
+        width: 100%
+        margin-top: 4rem
+
+    .scroll
+        display: inline

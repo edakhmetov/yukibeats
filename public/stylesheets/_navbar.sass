@@ -1,27 +1,22 @@
-.nav-links 
+.nav-links
     list-style: none
     display: flex
     justify-content: flex-end
     font-family: 'Anton', sans-serif
     font-size: 3rem
-    /* flex: 1; */
+    // flex: 1
     order: 2
     width: 100%
+    li
+        display: flex
+        align-items: center
+        justify-content: center
+        &:hover
+            transition: 0.4s
+            background-color: #e3784d
+            border-radius: 20px
 
-
-.nav-links li 
-    display: flex
-    align-items: center
-    justify-content: center
-
-
-.nav-links li:hover 
-    transition: 0.4s
-    background-color: #e3784d
-    border-radius: 20px
-
-
-.hamburger 
+.hamburger
     order: 1
     display: none
     flex-direction: column
@@ -30,55 +25,78 @@
     height: 17px
     flex: 1
     align-items: flex-end
+    span
+        height: 3.2px
+        width: 37px
+        background-color: black
+        border-radius: 10px
+        transition: all 0.3s ease
 
+.toggle
+    .line1
+        transform: rotate(-45deg) translate(-5px, 5px)
+    .line2
+        opacity: 0
+    .line3
+        transform: rotate(45deg) translate(-5px, -5px)
 
-.hamburger span 
-    height: 3.2px
-    width: 37px
-    background-color: black
-    border-radius: 10px
-    transition: all 0.3s ease
-
-
-.toggle .line1 
-    transform: rotate(-45deg) translate(-5px, 5px)
-
-
-.toggle .line2 
-    opacity: 0
-
-
-.toggle .line3 
-    transform: rotate(45deg) translate(-5px, -5px)
-
-
-a:active, a:focus 
-    box-shadow: none
-    outline: none
-    -moz-outline-style: none
-    outline-style: none
-
-
-a 
+a
     color: black
     text-decoration: none
     padding: 0 1rem
+    &:active, &:focus
+        box-shadow: none
+        outline: none
+        -moz-outline-style: none
+        outline-style: none
 
-
-nav 
+nav
     display: flex
-    /* min-height: 6vh; */
-    /* min-height: 10vh; */
     width: 80%
     margin: auto
     align-items: center
     justify-content: space-between
     margin-top: 2rem
 
-
-.logo 
+.logo
     flex: 1
+    font-weight: lighter
     font-size: 5.5rem
-    /* font-family: 'Covered By Your Grace', cursive; */
     font-family: 'Racing Sans One', cursive
     text-shadow: 2px 2px 0px #fff, 7px 6px 0px rgba(0, 0, 0, 0.15)
+
+@media screen and (max-width: 868px)
+    nav
+        // flex-direction: column
+        flex-wrap: wrap
+        align-items: center
+
+    .hamburger
+        display: flex
+
+    .logo
+        width: 100%
+        font-size: 4rem
+        display: flex
+        justify-content: space-between
+        align-items: center
+        text-align: center
+
+    .nav-link
+        width: 100%
+        text-align: center
+        a
+            padding: .5rem 1rem
+            width: 100%
+
+    .nav-links
+        display: block
+        width: 100%
+        flex-direction: column
+        font-size: 0
+        pointer-events: none
+        li
+            width: 100%
+        &.active
+            font-size: 3rem
+            pointer-events: all

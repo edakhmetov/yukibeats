@@ -23,18 +23,14 @@
             </p>
             <label class="switch">
                 <input class="checkbox" type="checkbox">
-                <span class="slider round"></span>
+                <span class="slider"></span>
             </label>
         </section>
         <section class="music">
             <% audios.forEach(function(audio) { %>
                 <div class="songContainer">
                     <div class="songInfo">
-                        <div class="name">
-                            <%= audio.name %>
-                        </div>
-                        <!-- <div class="time"><%= audio.duration %>  </div> -->
-                        <!-- <div class="rate">BPM: <%= audio.bpm %></div> -->
+                        <div class="name"><%= audio.name %></div>
                     </div>
                     <div class="songPlayer">
                         <audio class="audio" crossorigin="anonymous" src="<%= audio.source %>" type="<%= audio.type %>">
@@ -44,10 +40,7 @@
                         <input type="range" class="seekbar" value="0">
                     </div>
                     <div class="songInfo">
-                        <!-- <div class="name"><%= audio.name %></div> -->
-                        <!-- <div class="time"><%= audio.duration %>  </div> -->
-                        <div class="rate">BPM: <%= audio.bpm %>
-                        </div>
+                        <div class="rate">BPM: <%= audio.bpm %></div>
                     </div>
                     <hr>
                 </div>
@@ -60,10 +53,6 @@
     <section class="visualizer">
         <canvas height="100"></canvas>
     </section>
-
-    <!-- <div id="progress-container" class="progress-container">
-            <div class="progress" id="progress"></div>
-        </div> -->
 
     <%- include("partials/rights") %>
 
