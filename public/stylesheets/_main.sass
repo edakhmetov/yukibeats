@@ -1,7 +1,8 @@
-@import music
-@import slider
-
-
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    
 html
     font-size: 62.5%
     -ms-overflow-style: none
@@ -10,10 +11,10 @@ html
 body
     height: 100%
     overflow-x: hidden
-    &::-webkit-scrollbar 
+    &::-webkit-scrollbar
         display: none
 
-main 
+main
     display: flex
     min-height: 100%
     flex-direction: column
@@ -23,30 +24,26 @@ main
     width: 80%
     margin: auto
 
-
-h2 
+h2
     font-size: 3rem
     letter-spacing: 0.5px
     font-family: $headerFont
 
-
-.description 
+.description
     font-size: 2.4rem
     margin: 6rem 0
     font-family: $bodyFont
 
-
-.contactText 
+.contactText
     font-size: 1.9rem
     font-family: $bodyFont
 
-
-.about 
+.about
     width: 40%
     margin: auto 0
     text-align: center
 
-.scroll 
+.scroll
     display: none
     font-size: 3rem
     margin-bottom: 4rem
