@@ -17,7 +17,7 @@ lis.forEach((li, i) => {
 });
 
 function getDocHeight() {
-	const D = document;
+    const D = document;
     return Math.max(
         Math.max(D.body.scrollHeight, D.documentElement.scrollHeight),
         Math.max(D.body.offsetHeight, D.documentElement.offsetHeight),
@@ -26,15 +26,15 @@ function getDocHeight() {
 }
 
 function scrollScreen() {
-	window.scrollTo({
-	  top: getDocHeight(),
-	  left: 0,
-	  behavior: 'smooth'
-	});
+    window.scrollTo({
+        top: getDocHeight(),
+        left: 0,
+        behavior: 'smooth'
+    });
 }
 
 scroll.addEventListener('click', () => {
-	scrollScreen();
+    scrollScreen();
 });
 
 
@@ -42,8 +42,8 @@ const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
 hamburger.addEventListener('click', () => {
-	navLinks.classList.toggle('active');
-	hamburger.classList.toggle('toggle');
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('toggle');
 });
 
 
@@ -51,155 +51,155 @@ hamburger.addEventListener('click', () => {
 
 const checkbox = document.querySelector('.checkbox');
 
-checkbox.addEventListener('click', function() {
-	if (!checkbox.checked) {
-		checkbox.removeAttribute('checked');
-		canvasElement.style.display = "none";
-	} else {
-		checkbox.setAttribute('checked', "");
-		canvasElement.style.display = "block";
-		scrollScreen();
-	}
+checkbox.addEventListener('click', function () {
+    if (!checkbox.checked) {
+        checkbox.removeAttribute('checked');
+        canvasElement.style.display = "none";
+    } else {
+        checkbox.setAttribute('checked', "");
+        canvasElement.style.display = "block";
+        scrollScreen();
+    }
 });
 
 const allSoundsById = [];
 const audioContextById = [];
 
-window.onload = function() {
-	canvasElement.width = window.innerWidth
-	
-	if (canvasElement.width > 868) {
-		checkbox.setAttribute('checked', "");
-		canvasElement.style.display = "block";
-	} else {
-		canvasElement.style.display = "none";
-	}
-	// const grd = canvasContext.createLinearGradient(0, 70, 0, 200);
+window.onload = function () {
+    canvasElement.width = window.innerWidth
 
-	// grd.addColorStop(0, "white");
-	// grd.addColorStop(1, "black");
-	// canvasContext.fillStyle = grd;
-	// canvasContext.fillRect(0, 0, canvasElement.clientWidth, canvasElement.clientHeight);
+    if (canvasElement.width > 868) {
+        checkbox.setAttribute('checked', "");
+        canvasElement.style.display = "block";
+    } else {
+        canvasElement.style.display = "none";
+    }
+    // const grd = canvasContext.createLinearGradient(0, 70, 0, 200);
+
+    // grd.addColorStop(0, "white");
+    // grd.addColorStop(1, "black");
+    // canvasContext.fillStyle = grd;
+    // canvasContext.fillRect(0, 0, canvasElement.clientWidth, canvasElement.clientHeight);
 };
 
-const renderVisualizer = function(audioID) {
+const renderVisualizer = function (audioID) {
 
-            const createAudioContextiObj = function (sound) {
-                // initialize new audio context
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const createAudioContextiObj = function (sound) {
+        // initialize new audio context
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-                // create new audio context with given sound
-                const src = audioContext.createMediaElementSource(sound);
+        // create new audio context with given sound
+        const src = audioContext.createMediaElementSource(sound);
 
-                // create analyser (gets lots o data bout audio)
-                const analyser = audioContext.createAnalyser();
+        // create analyser (gets lots o data bout audio)
+        const analyser = audioContext.createAnalyser();
 
-                // connect audio source to analyser to get data for the sound
-                src.connect(analyser);
-                analyser.connect(audioContext.destination);
-				if (window.innerWidth <= 768) {
-                	analyser.fftSize = 1024; // set the bin size to condense amount of data
-            	} else {
-               		analyser.fftSize = 2048; // set the bin size to condense amount of data
-            	}
-                // analyser.fftSize = 1024; // set the bin size to condense amount of data
+        // connect audio source to analyser to get data for the sound
+        src.connect(analyser);
+        analyser.connect(audioContext.destination);
+        if (window.innerWidth <= 768) {
+            analyser.fftSize = 1024; // set the bin size to condense amount of data
+        } else {
+            analyser.fftSize = 2048; // set the bin size to condense amount of data
+        }
+        // analyser.fftSize = 1024; // set the bin size to condense amount of data
 
-                // array limited to unsigned int values 0-255
-                const bufferLength = analyser.frequencyBinCount;
-                const freqData = new Uint8Array(bufferLength);
+        // array limited to unsigned int values 0-255
+        const bufferLength = analyser.frequencyBinCount;
+        const freqData = new Uint8Array(bufferLength);
 
-                audioContextObj = {
-                    freqData, // note: at this time, this area is unpopulated!
-                    analyser
-                }
+        audioContextObj = {
+            freqData, // note: at this time, this area is unpopulated!
+            analyser
+        }
 
-                return audioContextObj;
+        return audioContextObj;
+    };
+
+    Object.keys(allSoundsById).forEach(function (id) {
+        // condition to avoid creating duplicate context. the visualizer won't break without it, but you will get a console error.
+        if (!audioContextById[id]) {
+            audioContextById[id] = createAudioContextiObj(allSoundsById[id])
+        }
+    });
+
+
+
+    const WIDTH = canvasElement.clientWidth;
+    const HEIGHT = canvasElement.clientHeight;
+    let barHeight;
+    let barsCount;
+    if (window.innerWidth <= 768) {
+        barsCount = 100;
+    } else {
+        barsCount = 350;
+    }
+    let barWidth = (WIDTH / barsCount);
+
+    function renderFrame() {
+        const freqDataMany = []; // reset array that holds the sound data for given number of audio sources
+        const agg = []; // reset array that holds aggregate sound data
+
+        canvasContext.clearRect(0, 0, WIDTH, HEIGHT) // clear canvas at each frame
+        canvasContext.fillStyle = '#fff';
+        canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+        // const grd = canvasContext.createLinearGradient(0, 70, 0, 200);
+
+        // grd.addColorStop(0, "white");
+        // grd.addColorStop(1, "black");
+        // canvasContext.fillStyle = grd;
+        // canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+
+
+        audioContextArr = Object.values(audioContextById); // array with all the audio context information
+
+        // for each element in that array, get the *current* frequency data and store it
+        audioContextArr.forEach(function (audioContextObj) {
+            let freqData = audioContextObj.freqData;
+            audioContextObj.analyser.getByteFrequencyData(freqData); // populate with data
+            freqDataMany.push(freqData);
+        })
+
+        if (audioContextArr.length > 0) {
+            // aggregate that data!
+            for (let i = 0; i < freqDataMany[0].length; i++) {
+                agg.push(0);
+                freqDataMany.forEach(function (data) {
+                    agg[i] += data[i];
+                });
             };
 
-            Object.keys(allSoundsById).forEach(function (id) {
-                // condition to avoid creating duplicate context. the visualizer won't break without it, but you will get a console error.
-                if (!audioContextById[id]) {
-                    audioContextById[id] = createAudioContextiObj(allSoundsById[id])
+            let x = 0;
+
+            for (let i = 0; i < (barsCount); i++) {
+
+                barHeight = (agg[i] * 0.4);
+                let y = (HEIGHT - barHeight);
+
+                drawBar(canvasContext, x, y, barWidth, barHeight)
+
+                if (i < barsCount) {
+                    x += barWidth + 1;
+                } else {
+                    barWidth += barWidth + 1;
+                    x += barWidth + 1;
                 }
-            });
 
-
-
-            const WIDTH = canvasElement.clientWidth;
-            const HEIGHT = canvasElement.clientHeight;
-            let barHeight;
-            let barsCount;
-            if (window.innerWidth <= 768) {
-                barsCount = 100;
-            } else {
-                barsCount = 350;
             }
-            let barWidth = (WIDTH / barsCount);
-
-            function renderFrame() {
-                const freqDataMany = []; // reset array that holds the sound data for given number of audio sources
-                const agg = []; // reset array that holds aggregate sound data
-
-                canvasContext.clearRect(0, 0, WIDTH, HEIGHT) // clear canvas at each frame
-                canvasContext.fillStyle = '#fff';
-                canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
-				// const grd = canvasContext.createLinearGradient(0, 70, 0, 200);
-
-				// grd.addColorStop(0, "white");
-				// grd.addColorStop(1, "black");
-				// canvasContext.fillStyle = grd;
-				// canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
-
-
-
-                audioContextArr = Object.values(audioContextById); // array with all the audio context information
-
-                // for each element in that array, get the *current* frequency data and store it
-                audioContextArr.forEach(function (audioContextObj) {
-                    let freqData = audioContextObj.freqData;
-                    audioContextObj.analyser.getByteFrequencyData(freqData); // populate with data
-                    freqDataMany.push(freqData);
-                })
-
-                if (audioContextArr.length > 0) {
-                    // aggregate that data!
-                    for (let i = 0; i < freqDataMany[0].length; i++) {
-                        agg.push(0);
-                        freqDataMany.forEach(function (data) {
-                            agg[i] += data[i];
-                        });
-                    };
-
-                    let x = 0;
-
-                    for (let i = 0; i < (barsCount); i++) {
-						
-						barHeight = (agg[i] * 0.4);                        
-                        let y = (HEIGHT - barHeight);
-
-                        drawBar(canvasContext, x, y, barWidth, barHeight)
-
-                        if (i < barsCount) {
-                            x += barWidth + 1;
-                        } else {
-                            barWidth += barWidth + 1;
-                            x += barWidth + 1;
-                        }
-
-                    }
-                    function drawBar(canvasContext, x, y, barWidth, barHeight) {
-                        let currentPos = audios[audioID].currentTime / audios[audioID].duration;
-                        if (x / WIDTH >= currentPos) {
-                            canvasContext.fillStyle = `#e3784d`;
-                        } else {
-                            canvasContext.fillStyle = `rgb(100, 100, 100)`;
-                        }
-                        canvasContext.fillRect(x, y, barWidth, barHeight);
-                    }
+            function drawBar(canvasContext, x, y, barWidth, barHeight) {
+                let currentPos = audios[audioID].currentTime / audios[audioID].duration;
+                if (x / WIDTH >= currentPos) {
+                    canvasContext.fillStyle = `#e3784d`;
+                } else {
+                    canvasContext.fillStyle = `rgb(100, 100, 100)`;
                 }
-                requestAnimationFrame(renderFrame); // this defines the callback function for what to do at each frame
+                canvasContext.fillRect(x, y, barWidth, barHeight);
             }
-            renderFrame();
+        }
+        requestAnimationFrame(renderFrame); // this defines the callback function for what to do at each frame
+    }
+    renderFrame();
 }
 
 const times = document.querySelectorAll('.time');
@@ -219,50 +219,50 @@ audios.forEach(function (audio, i) {
         // mainLogo.classList.add('rotating');
         audio.play();
     }
-	
+
 
     // Pause Song
     let pauseSong = function () {
         songContainer.classList.remove('play');
         playBtn.querySelector('i.fas').classList.add('fa-play');
         playBtn.querySelector('i.fas').classList.remove('fa-pause');
-       	audio.pause();
+        audio.pause();
     }
 
-	const resizeCanvas = function () {
-		canvasElement.width = window.innerWidth;
-		// renderVisualizer(i);
+    const resizeCanvas = function () {
+        canvasElement.width = window.innerWidth;
+        // renderVisualizer(i);
     }
     window.addEventListener('resize', resizeCanvas);
-	
-	// resizeCanvas();
+
+    // resizeCanvas();
 
     // update progress with music
     let setProgress = function () {
         seekbar.value = audio.currentTime;
         seekbar.style.background = 'linear-gradient(to right, rgb(100, 100, 100), rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d)';
-        time.style.left = `${28 + (72 * (audio.currentTime/audio.duration*100))/100}%`;
+        time.style.left = `${28 + (72 * (audio.currentTime / audio.duration * 100)) / 100}%`;
         // time.innerHTML = `${audio.currentTime}`;
         const cur = audio.currentTime;
         const currentMin = Math.floor(cur / 60);
         const currentSec = Math.floor(cur % 60);
         if (currentSec < 10) {
-          time.innerHTML = `${currentMin}:0${currentSec}`;
+            time.innerHTML = `${currentMin}:0${currentSec}`;
         } else {
-          time.innerHTML = `${currentMin}:${currentSec}`;
+            time.innerHTML = `${currentMin}:${currentSec}`;
         }
     };
 
     // update the seekbar when user touches
     seekbar.oninput = function () {
         audio.currentTime = this.value;
-    };	
-	
-	playBtn.addEventListener('click', function() {
-		audio.id = i;
-		audio.dataset.action = "off"
-    	allSoundsById[audio.id] = audio;
-		seekbar.max = Math.floor(audio.duration);
+    };
+
+    playBtn.addEventListener('click', function () {
+        audio.id = i;
+        audio.dataset.action = "off"
+        allSoundsById[audio.id] = audio;
+        seekbar.max = Math.floor(audio.duration);
         const isPlaying = songContainer.classList.contains('play');
         if (isPlaying) {
             pauseSong();
@@ -270,20 +270,20 @@ audios.forEach(function (audio, i) {
             playSong();
         }
         for (let k = 0; k < audios.length; k++) {
-            const pauseOtherSongs = function() {
+            const pauseOtherSongs = function () {
                 songContainers[k].classList.remove('play');
                 playBtns[k].querySelector('i.fas').classList.add('fa-play');
                 playBtns[k].querySelector('i.fas').classList.remove('fa-pause');
                 audios[k].pause();
             }
-            if (k===i) {
+            if (k === i) {
                 if (!songContainers[k].classList.contains('play')) {
                     pauseOtherSongs();
                 } else {
                     playSong(i);
-					if(checkbox.checked) {
-						renderVisualizer(i);	
-					}
+                    if (checkbox.checked) {
+                        renderVisualizer(i);
+                    }
                 }
             } else {
                 pauseOtherSongs();
@@ -295,26 +295,26 @@ audios.forEach(function (audio, i) {
 
     // update the seekbar
     audio.addEventListener('timeupdate', setProgress);
-	
-	// update the song when user touches the visualizer
-	function setVisualizer(e) {
-		const width = this.clientWidth;
-		const clickX = e.offsetX;
-		
-		if (songContainer.classList.contains('play')) {
-			const duration = audio.duration;
-			audio.currentTime = (clickX / width) * duration;
-		} else {
-			return
-		}
-	}
 
-	canvasElement.addEventListener('click', setVisualizer);
-	
-// 	***************TEST********************
-	// function progressUpdate(e) {
-	// 	let progressPercent = (audio.currentTime / audio.duration) * 100;
-	// 	progress.style.width = `${progressPercent}%`;
-	// };
-	// audio.addEventListener("timeupdate", progressUpdate);
+    // update the song when user touches the visualizer
+    function setVisualizer(e) {
+        const width = this.clientWidth;
+        const clickX = e.offsetX;
+
+        if (songContainer.classList.contains('play')) {
+            const duration = audio.duration;
+            audio.currentTime = (clickX / width) * duration;
+        } else {
+            return
+        }
+    }
+
+    canvasElement.addEventListener('click', setVisualizer);
+
+    // 	***************TEST********************
+    // function progressUpdate(e) {
+    // 	let progressPercent = (audio.currentTime / audio.duration) * 100;
+    // 	progress.style.width = `${progressPercent}%`;
+    // };
+    // audio.addEventListener("timeupdate", progressUpdate);
 });
