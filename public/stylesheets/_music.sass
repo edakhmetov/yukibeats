@@ -5,26 +5,18 @@
     max-height: 60rem
     margin: auto 0
     align-items: center
-    font-family: 'Bebas Neue', cursive
+    font-family: $bodyFont
     overflow-y: auto
-
-
-.music 
     overflow: auto
     background: linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%
     background-repeat: no-repeat
     background-color: white
     background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px
     background-attachment: local, local, scroll, scroll
-
-
-.music::-webkit-scrollbar 
-    display: none
-
-
-.music 
     -ms-overflow-style: none
     scrollbar-width: none
+    &::-webkit-scrollbar
+        display: none
 
 
 .songContainer 
@@ -64,12 +56,12 @@
     margin: auto
     margin-left: 2rem
     background-color: rgba(255, 255, 255, 0)
-    color: #e3784d
+    color: $mainColor
     outline: none
     min-width: 70px
     min-height: 70px
     font-size: 13px
-    border: 3px solid #e3784d
+    border: 3px solid $mainColor
     border-radius: 50%
 
 
@@ -88,7 +80,6 @@ hr
 
 .seekbar 
     -webkit-appearance: none
-    // Hides the slider so that custom slider can be made
     // overflow: hidden
     width: 100%
     background: transparent
@@ -96,72 +87,60 @@ hr
     margin: auto
     margin-left: 2rem
     border-radius: 50px
-    background: #e3784d
-
-
-.seekbar::-webkit-slider-thumb 
-    -webkit-appearance: none
-    border: 1px solid #000000
-    height: 18px
-    width: 18px
-    border-radius: 50%
-    background: #ffffff
-    cursor: pointer
-    margin-top: -7px
-    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
-
-
-.seekbar::-moz-range-thumb 
-    -webkit-appearance: none
-    border: 1px solid #000000
-    height: 18px
-    width: 18px
-    border-radius: 50%
-    background: #ffffff
-    cursor: pointer
-    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
-
-.seekbar::-ms-thumb 
-    -webkit-appearance: none
-    border: 1px solid #000000
-    height: 18px
-    width: 18px
-    border-radius: 50%
-    background: #ffffff
-    cursor: pointer
-    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
-
-
-.seekbar::-webkit-slider-runnable-track 
-    height: 5px
-    cursor: pointer
-    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
-    color: #e3784d
-    border-radius: 50px
-    // border: 0.2px solid #010101
-
-
-.seekbar::-webkit-slider-runnable-track 
-    height: 5px
-    cursor: pointer
-    // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
-    color: rgb(255, 150, 66)
-    border-radius: 50px
-    // border: 0.2px solid #010101
-
-.seekbar:focus 
-    outline: none
+    background: $mainColor
+    &::-webkit-slider-thumb 
+        -webkit-appearance: none
+        border: 1px solid #000000
+        height: 18px
+        width: 18px
+        border-radius: 50%
+        background: #ffffff
+        cursor: pointer
+        margin-top: -7px
+        // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+    &::-moz-range-thumb 
+        -webkit-appearance: none
+        border: 1px solid #000000
+        height: 18px
+        width: 18px
+        border-radius: 50%
+        background: #ffffff
+        cursor: pointer
+        // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+    &::-ms-thumb 
+        -webkit-appearance: none
+        border: 1px solid #000000
+        height: 18px
+        width: 18px
+        border-radius: 50%
+        background: #ffffff
+        cursor: pointer
+        // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+    &::-webkit-slider-runnable-track 
+        height: 5px
+        cursor: pointer
+        // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+        color: $mainColor
+        border-radius: 50px
+        // border: 0.2px solid #010101
+    &::-webkit-slider-runnable-track 
+        height: 5px
+        cursor: pointer
+        // box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+        color: rgb(255, 150, 66)
+        border-radius: 50px
+        // border: 0.2px solid #010101
+    &:focus 
+        outline: none
 
 @media screen and (max-width: 868px)
     .music
         width: 100%
         margin-top: 5rem
         max-height: 44rem
-        //max-height: 100%
 
     .songContainer
         width: 100%
-        /* max-height: 10rem; */
         padding: 0
         margin: 2rem 0
         padding-left: 0
