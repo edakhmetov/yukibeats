@@ -202,12 +202,13 @@ const renderVisualizer = function(audioID) {
             renderFrame();
 }
 
-
+const times = document.querySelectorAll('.time');
 
 audios.forEach(function (audio, i) {
     let playBtn = playBtns[i];
     let songContainer = songContainers[i];
     let seekbar = seekbars[i];
+    let time = times[i];
 
 
     // Play song
@@ -240,6 +241,16 @@ audios.forEach(function (audio, i) {
     let setProgress = function () {
         seekbar.value = audio.currentTime;
         seekbar.style.background = 'linear-gradient(to right, rgb(100, 100, 100), rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d)';
+        time.style.left = `${28 + (72 * (audio.currentTime/audio.duration*100))/100}%`;
+        // time.innerHTML = `${audio.currentTime}`;
+        const cur = audio.currentTime;
+        const currentMin = Math.floor(cur / 60);
+        const currentSec = Math.floor(cur % 60);
+        if (currentSec < 10) {
+          time.innerHTML = `${currentMin}:0${currentSec}`;
+        } else {
+          time.innerHTML = `${currentMin}:${currentSec}`;
+        }
     };
 
     // update the seekbar when user touches
