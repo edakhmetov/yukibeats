@@ -1,717 +1,767 @@
-html {
-    font-size: 62.5%;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    /* position: relative; */
-    height: 100%;
-}
-
-h1 {
-    /* font-size: 4.5rem; */
-    font-weight: lighter;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    font-family: 'Anton', sans-serif;
-    font-size: 3rem;
-    /* flex: 1; */
-    order: 2;
-    width: 100%;
-}
-
-.nav-links li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-links li:hover {
-    transition: 0.4s;
-    background-color: #e3784d;
-    border-radius: 20px;
-}
-
-.hamburger {
-    order: 1;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 17px;
-    flex: 1;
-    align-items: flex-end;
-}
-
-.hamburger span {
-    height: 3.2px;
-    width: 37px;
-    background-color: black;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 5px)
-}
-
-.toggle .line2 {
-    opacity: 0;
-}
-
-.toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -5px)
-}
-
-a:active, a:focus {
-    box-shadow: none;
-    outline: none;
-    -moz-outline-style: none;
-    outline-style: none;
-}
-
-a {
-    color: black;
-    text-decoration: none;
-    padding: 0 1rem;
-}
-
-nav {
-    display: flex;
-    /* min-height: 6vh; */
-    /* min-height: 10vh; */
-    width: 80%;
-    margin: auto;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 2rem;
-}
-
-.logo {
-    flex: 1;
-    font-size: 5.5rem;
-    /* font-family: 'Covered By Your Grace', cursive; */
-    font-family: 'Racing Sans One', cursive;
-    text-shadow: 2px 2px 0px #fff, 7px 6px 0px rgba(0, 0, 0, 0.15);
-}
-
-main {
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
-}
-
-.main {
-    /* min-height: 100%; */
-    display: flex;
-    width: 80%;
-    margin: auto;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-body::-webkit-scrollbar {
-    display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-
-html {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-}
-
-h2 {
-    font-size: 3rem;
-    letter-spacing: 0.5px;
-    /* font-family: 'Bebas Neue', cursive; */
-    font-family: 'Anton', sans-serif;
-}
-
-.description {
-    font-size: 2.4rem;
-    margin: 6rem 0;
-    font-family: 'Bebas Neue', cursive;
-}
-
-.contactText {
-    font-size: 1.9rem;
-    font-family: 'Bebas Neue', cursive;
-}
-
-.about {
-    /* height: 100%; */
-    width: 40%;
-    margin: auto 0;
-    /* margin-bottom: 14%; */
-    text-align: center;
+.music {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 60%;
+  max-height: 60rem;
+  margin: auto 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Bebas Neue', cursive;
+  overflow-y: auto;
 }
 
 .music {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    max-height: 60rem;
-    margin: auto 0;
-    align-items: center;
-    font-family: 'Bebas Neue', cursive;
-    overflow-y: auto;
-}
-
-.music {
-    overflow: auto;
-    background: /* Shadow covers */
-    linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
-    radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
-    background: /* Shadow covers */
-    linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%, /* Shadows */
-    radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
-    background-repeat: no-repeat;
-    background-color: white;
-    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
-    /* Opera doesn't support this in the shorthand */
-    background-attachment: local, local, scroll, scroll;
+  overflow: auto;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll;
 }
 
 .music::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-
 .music {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .songContainer {
-    width: 100%;
-    margin: 1rem 0;
-    padding: 1.5rem 0;
-    padding-left: 4rem;
-    padding-right: 10rem;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1.5rem 0;
+  padding-left: 4rem;
+  padding-right: 10rem;
 }
 
 .songInfo {
-    display: flex;
-    width: 100%;
-    /* justify-content: space-between; */
-    /* font-size: 2.7rem; */
-    /* padding-left: 15%; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  /* justify-content: space-between */
+  /* font-size: 2.7rem */
+  /* padding-left: 15% */
 }
 
-/* .name, .time, .rate {
-	width: 33%;
-} */
-
 .name {
-    text-align: center;
-    width: 40%;
-    font-size: 2.7rem;
+  text-align: center;
+  width: 40%;
+  font-size: 2.7rem;
 }
 
 .rate {
-    text-align: center;
-    /* margin-left: ; */
-    width: 40%;
-    font-size: 2.3rem;
+  text-align: center;
+  /* margin-left: ; */
+  width: 40%;
+  font-size: 2.3rem;
 }
 
 .songPlayer {
-    display: flex;
-    position: relative;
-    justify-content: space-around;
-    width: 100%;
-    margin: 0.5rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  margin: 0.5rem 0;
 }
 
 .playBtn {
-    margin: auto;
-    margin-left: 2rem;
-    background-color: rgba(255, 255, 255, 0);
-    color: #e3784d;
-    outline: none;
-    min-width: 70px;
-    min-height: 70px;
-    font-size: 13px;
-    border: 3px solid #e3784d;
-    border-radius: 50%;
+  margin: auto;
+  margin-left: 2rem;
+  background-color: rgba(255, 255, 255, 0);
+  color: #e3784d;
+  outline: none;
+  min-width: 70px;
+  min-height: 70px;
+  font-size: 13px;
+  border: 3px solid #e3784d;
+  border-radius: 50%;
 }
-
-/* i.fas {
-    text-align: center;
-    min-width: 45px;
-    min-height: 45px;
-    border: 3px solid #e3784d;
-    border-radius: 50%;
-} */
 
 hr {
-    margin-top: 1.5rem;
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-
-.footer-container {
-    background-color: black;
-    width: 100%;
-    min-height: 5vh;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.footer {
-    width: 80%;
-    margin: auto;
-    color: rgb(245, 245, 245);
-    display: flex;
-    justify-content: space-between;
-}
-
-.rights {
-    display: flex;
-    flex-direction: column;
-    flex: 4;
-    font-size: 1.6rem;
-    font-family: 'Bebas Neue', cursive;
-    font-weight: lighter;
-    letter-spacing: 2px;
-}
-
-.socialLinks {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
-    font-size: 3rem;
-    align-items: center;
-}
-
-.socialLink a {
-    padding: 0 1rem;
-    color: rgb(240, 240, 240);
-}
-
-a#soundcloud:hover {
-    color: #ff7700;
-}
-
-a#soundcloud {
-    font-size: 3.5rem;
-}
-
-a#instagram {
-    font-size: 3.5rem;
-}
-
-a#instagram:hover {
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
+  margin-top: 1.5rem;
+  border: 0;
+  height: 1px;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 .time {
-    /* margin-left: 2rem; */
-    position: absolute;
-    /* text-align: right; */
-    top: 10;
-    left: 28%;
-    width: 20px;
+  /* margin-left: 2rem; */
+  position: absolute;
+  /* text-align: right; */
+  top: 10;
+  left: 28%;
+  width: 20px;
 }
 
 .seekbar {
-    -webkit-appearance: none;
-    /* Hides the slider so that custom slider can be made */
-    /* overflow: hidden; */
-    width: 100%;
-    /* Specific width is required for Firefox. */
-    background: transparent;
-    /* Otherwise white in Chrome */
-    height: 15px;
-    margin: auto;
-    margin-left: 2rem;
-    border-radius: 50px;
-    background: #e3784d;
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  /* overflow: hidden; */
+  width: 100%;
+  /* Specific width is required for Firefox. */
+  background: transparent;
+  /* Otherwise white in Chrome */
+  height: 15px;
+  margin: auto;
+  margin-left: 2rem;
+  border-radius: 50px;
+  background: #e3784d;
 }
 
 /* slide for chrome */
-
 .seekbar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: 1px solid #000000;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background: #ffffff;
-    cursor: pointer;
-    margin-top: -7px;
-    /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
-    /* Add cool effects to your sliders! */
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -7px;
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+  /* Add cool effects to your sliders! */
 }
 
 /* slide for mozilla */
-
 .seekbar::-moz-range-thumb {
-    -webkit-appearance: none;
-    border: 1px solid #000000;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background: #ffffff;
-    cursor: pointer;
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
-    /* Add cool effects to your sliders! */
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+  /* Add cool effects to your sliders! */
 }
 
 /* slide for ie */
-
 .seekbar::-ms-thumb {
-    -webkit-appearance: none;
-    border: 1px solid #000000;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    background: #ffffff;
-    cursor: pointer;
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
-    /* Add cool effects to your sliders! */
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+  /* Add cool effects to your sliders! */
 }
 
 .seekbar::-webkit-slider-runnable-track {
-    height: 5px;
-    cursor: pointer;
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
-    color: #e3784d;
-    border-radius: 50px;
-    /* border: 0.2px solid #010101; */
+  height: 5px;
+  cursor: pointer;
+  /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+  color: #e3784d;
+  border-radius: 50px;
+  /* border: 0.2px solid #010101; */
 }
 
 .seekbar::-webkit-slider-runnable-track {
-    height: 5px;
-    cursor: pointer;
-    /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
-    color: rgb(255, 150, 66);
-    border-radius: 50px;
-    /* border: 0.2px solid #010101; */
+  height: 5px;
+  cursor: pointer;
+  /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+  color: #ff9642;
+  border-radius: 50px;
+  /* border: 0.2px solid #010101; */
 }
 
 .seekbar:focus {
-    outline: none;
-    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  outline: none;
+  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
-
-.scroll {
-    display: none;
-    font-size: 3rem;
-    margin-bottom: 4rem;
-    width: 4rem;
-    height: 4rem;
-    color: #e3784d;
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    /* -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent; */
-    border: none;
-    outline: none;
-}
-
-/* The switch - the box around the slider */
 
 .switch {
-    margin: auto;
-    margin-top: 10px;
-    position: relative;
-    display: flex;
-    width: 50px;
-    height: 24px;
+  margin: auto;
+  margin-top: 10px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50px;
+  height: 24px;
 }
 
 /* Hide default HTML checkbox */
-
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-/* The slider */
-
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-input:checked+.slider {
-    background-color: #e3784d;
+input:checked + .slider {
+  background-color: #e3784d;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #e3784d;
+input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #e3784d;
+          box-shadow: 0 0 1px #e3784d;
 }
 
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
 /* Rounded sliders */
-
 .slider.round {
-    border-radius: 34px;
+  border-radius: 34px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
-/* EMAIL CONTACT FORM CSS */
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main {
+  /* min-height: 100%; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+h2 {
+  font-size: 3rem;
+  letter-spacing: 0.5px;
+  /* font-family: 'Bebas Neue', cursive; */
+  font-family: 'Anton', sans-serif;
+}
+
+.description {
+  font-size: 2.4rem;
+  margin: 6rem 0;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.contactText {
+  font-size: 1.9rem;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.about {
+  /* height: 100%; */
+  width: 40%;
+  margin: auto 0;
+  /* margin-bottom: 14%; */
+  text-align: center;
+}
+
+.scroll {
+  display: none;
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  width: 4rem;
+  height: 4rem;
+  color: #e3784d;
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  /* -webkit-text-fill-color: transparent */
+  /*-moz-text-fill-color: transparent */
+  border: none;
+  outline: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-family: 'Anton', sans-serif;
+  font-size: 3rem;
+  /* flex: 1; */
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  width: 100%;
+}
+
+.nav-links li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nav-links li:hover {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  background-color: #e3784d;
+  border-radius: 20px;
+}
+
+.hamburger {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 17px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.hamburger span {
+  height: 3.2px;
+  width: 37px;
+  background-color: black;
+  border-radius: 10px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.toggle .line1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 5px);
+          transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -5px);
+          transform: rotate(45deg) translate(-5px, -5px);
+}
+
+a:active, a:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  -moz-outline-style: none;
+  outline-style: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* min-height: 6vh; */
+  /* min-height: 10vh; */
+  width: 80%;
+  margin: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.logo {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 5.5rem;
+  /* font-family: 'Covered By Your Grace', cursive; */
+  font-family: 'Racing Sans One', cursive;
+  text-shadow: 2px 2px 0px #fff, 7px 6px 0px rgba(0, 0, 0, 0.15);
+}
+
+.footer-container {
+  background-color: black;
+  width: 100%;
+  min-height: 5vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 0;
+}
+
+.footer {
+  width: 80%;
+  margin: auto;
+  color: whitesmoke;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.rights {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  font-size: 1.6rem;
+  font-family: 'Bebas Neue', cursive;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+.socialLinks {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 3rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.socialLink a {
+  padding: 0 1rem;
+  color: #f0f0f0;
+}
+
+a#soundcloud:hover {
+  color: #ff7700;
+}
+
+a#soundcloud {
+  font-size: 3.5rem;
+}
+
+a#instagram {
+  font-size: 3.5rem;
+}
+
+a#instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  /* position: relative; */
+  height: 100%;
+}
+
+h1 {
+  /* font-size: 4.5rem; */
+  font-weight: lighter;
+}
 
 .main.contact {
-    flex-direction: column;
-    align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .contact-form-class {
-    margin: 0;
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: left;
-    background-color: #fff;
-    padding: 30px;
-    padding-bottom: 10px;
-    /* border: 1px solid #ced4da;
-    border-radius: 0.25rem; */
-    width: 60%;
+  margin: 0;
+  font-family: -apple-system, Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+  padding: 30px;
+  padding-bottom: 10px;
+  width: 60%;
 }
 
 .contact-form-group {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .contact-label {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    font-size: 2rem;
-    font-family: 'Bebas Neue', cursive;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .contact-input-group {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: stretch;
-    align-items: stretch;
-    width: 100%;
+  position: relative;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: stretch;
+  -webkit-box-align: stretch;
+          align-items: stretch;
+  width: 100%;
 }
 
 textarea.contact-form-control {
-    font-family: -apple-system, Arial, sans-serif;
-    height: 25rem;
-    padding-top: 1rem;
-    resize: none;
-    overflow: auto;
-    border-radius: 10px;
+  font-family: -apple-system, Arial, sans-serif;
+  height: 25rem;
+  padding-top: 1rem;
+  resize: none;
+  overflow: auto;
+  border-radius: 10px;
 }
 
 .contact-form-control {
-    display: block;
-    width: 100%;
-    height: 4.5rem;
-    padding: 0.375rem 2rem;
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    outline: none;
-    border-radius: 10px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+  padding: 0.375rem 2rem;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  outline: none;
+  border-radius: 10px;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .contact-btn {
-    margin: auto;
-    font-family: 'Bebas Neue', cursive;
-    background-color: #e3784d;
-    outline: none;
-    width: 100%;
-    height: 6rem;
-    font-size: 3rem;
-    letter-spacing: 0.5px;
-    border: 1px solid #ced4da;
-    border-radius: 10px;
-    cursor: pointer;
+  margin: auto;
+  font-family: 'Bebas Neue', cursive;
+  background-color: #e3784d;
+  outline: none;
+  width: 100%;
+  height: 6rem;
+  font-size: 3rem;
+  letter-spacing: 0.5px;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    /* background: #f5f5f5; */
-    border-radius: 25px;
+  /* background: #f5f5f5; */
+  border-radius: 25px;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 25px;
-    background: #ccc;
+  border-radius: 25px;
+  background: #ccc;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #999;
+  background: #999;
 }
 
 /* ***************TEST********************* */
-
-/* .progress-container {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 150, 66, 1);
-    position: absolute;
-	bottom: 5vh;
-    z-index: 2;
-}
-
-.progress-container .progress {
-    width:  0;
-    height: 8px;
-    background: black;
-    z-index: 2;
-} */
-
 /* *********************END OF TEST******************** */
-
 @media screen and (max-width: 868px) {
-    .hamburger {
-        display: flex;
-    }
-    .main {
-        flex-direction: column;
-    }
-    .main.contact {
-        margin-top: 3.2rem;
-        width: 100%;
-    }
-    .contact-form-class {
-        width: 90%;
-    }
-    .about {
-        width: 100%;
-        margin-top: 4rem;
-    }
-    .music {
-        width: 100%;
-        margin-top: 5rem;
-        max-height: 44rem;
-        /* max-height: 100%; */
-    }
-    .scroll {
-        display: inline;
-    }
-    .logo {
-        width: 100%;
-        font-size: 4rem;
-        /* text-align: left; */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
-    }
-    nav {
-        /* flex-direction: column; */
+  .hamburger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .main.contact {
+    margin-top: 3.2rem;
+    width: 100%;
+  }
+  .contact-form-class {
+    width: 90%;
+  }
+  .about {
+    width: 100%;
+    margin-top: 4rem;
+  }
+  .music {
+    width: 100%;
+    margin-top: 5rem;
+    max-height: 44rem;
+  }
+  .scroll {
+    display: inline;
+  }
+  .logo {
+    width: 100%;
+    font-size: 4rem;
+    /* text-align: left; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+  }
+  nav {
+    /* flex-direction: column; */
+    -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-        align-items: center;
-    }
-    .nav-link {
-        width: 100%;
-        text-align: center;
-    }
-    .nav-link a {
-        padding: .5rem 1rem;
-        width: 100%;
-    }
-    .nav-links li {
-        width: 100%;
-    }
-    .nav-links {
-        display: block;
-        width: 100%;
-        flex-direction: column;
-        font-size: 0;
-        pointer-events: none;
-        /* margin-bottom: 3rem; */
-    }
-    .nav-links.active {
-        font-size: 3rem;
-        pointer-events: all;
-    }
-    .songContainer {
-        width: 100%;
-        /* max-height: 10rem; */
-        padding: 0;
-        margin: 2rem 0;
-        padding-left: 0;
-    }
-    .songInfo {
-        padding-left: 10%;
-    }
-    .playBtn {
-        margin: 0;
-    }
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .nav-link {
+    width: 100%;
+    text-align: center;
+  }
+  .nav-link a {
+    padding: .5rem 1rem;
+    width: 100%;
+  }
+  .nav-links li {
+    width: 100%;
+  }
+  .nav-links {
+    display: block;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-size: 0;
+    pointer-events: none;
+    /* margin-bottom: 3rem; */
+  }
+  .nav-links.active {
+    font-size: 3rem;
+    pointer-events: all;
+  }
+  .songContainer {
+    width: 100%;
+    /* max-height: 10rem; */
+    padding: 0;
+    margin: 2rem 0;
+    padding-left: 0;
+  }
+  .songInfo {
+    padding-left: 10%;
+  }
+  .playBtn {
+    margin: 0;
+  }
 }
-
-/* @media screen and (min-width: 1920px) {
-	.music {
-		max-height: 80rem;
-	}
-} */
+/*# sourceMappingURL=main.css.map */
