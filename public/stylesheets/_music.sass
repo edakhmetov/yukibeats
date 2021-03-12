@@ -70,13 +70,15 @@ hr
     width: 100%
     margin-left: 2rem
     margin-right: 10rem
+    &:hover
+        .time
+            display: block
 
 .time
+    display: none
     position: absolute
     top: 10
     text-align: right
-    // left: 2rem
-    // width: 20px
 
 .seekbar
     -webkit-appearance: none
@@ -150,3 +152,6 @@ hr
 
     .playBtn
         margin: 0
+    
+    .seekTime
+        margin-right: 0

@@ -373,7 +373,12 @@ hr {
   margin-right: 10rem;
 }
 
+.seekTime:hover .time {
+  display: block;
+}
+
 .time {
+  display: none;
   position: absolute;
   top: 10;
   text-align: right;
@@ -455,6 +460,9 @@ hr {
   }
   .playBtn {
     margin: 0;
+  }
+  .seekTime {
+    margin-right: 0;
   }
 }
 
