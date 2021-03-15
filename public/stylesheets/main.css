@@ -381,7 +381,12 @@ hr {
   display: none;
   position: absolute;
   top: 10;
-  text-align: right;
+  width: 4%;
+  background-color: rgba(227, 120, 77, 0.7);
+  border: 1px solid black;
+  border-radius: 20px;
+  left: 3%;
+  text-align: center;
 }
 
 .seekbar {

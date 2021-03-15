@@ -233,11 +233,10 @@ audios.forEach(function (audio, i) {
 
     // update progress with music
     let setProgress = function () {
-        seekbar.value = audio.currentTime;
-        seekbar.style.background = 'linear-gradient(to right, rgb(100, 100, 100), rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d)';
-        time.style.width = `${(100 * (audio.currentTime / audio.duration * 100)) / 100}%`;
-        // time.innerHTML = `${audio.currentTime}`;
         const cur = audio.currentTime;
+        seekbar.value = cur;
+        seekbar.style.background = 'linear-gradient(to right, rgb(100, 100, 100), rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d)';
+        time.style.left = `${3+(96 * (cur / audio.duration * 100)) / 100}%`;
         const currentMin = Math.floor(cur / 60);
         const currentSec = Math.floor(cur % 60);
         if (currentSec < 10) {
