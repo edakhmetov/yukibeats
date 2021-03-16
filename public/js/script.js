@@ -184,9 +184,9 @@ const renderVisualizer = function (audioID) {
             function drawBar(canvasContext, x, y, barWidth, barHeight) {
                 let currentPos = audios[audioID].currentTime / audios[audioID].duration;
                 if (x / WIDTH >= currentPos) {
-                    canvasContext.fillStyle = `#e3784d`;
-                } else {
                     canvasContext.fillStyle = `rgb(100, 100, 100)`;
+                } else {
+                    canvasContext.fillStyle = `#e3784d`;
                 }
                 canvasContext.fillRect(x, y, barWidth, barHeight);
             }
@@ -235,8 +235,8 @@ audios.forEach(function (audio, i) {
     let setProgress = function () {
         const cur = audio.currentTime;
         seekbar.value = cur;
-        seekbar.style.background = 'linear-gradient(to right, rgb(100, 100, 100), rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, #e3784d)';
-        time.style.left = `${2+(98 * (cur / audio.duration * 100)) / 100}%`;
+        seekbar.style.background = 'linear-gradient(to right, #e3784d, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100))';
+        time.style.left = `${2+(98 * (cur / audio.duration * 98)) / 100}%`;
         const currentMin = Math.floor(cur / 60);
         const currentSec = Math.floor(cur % 60);
         if (currentSec < 10) {

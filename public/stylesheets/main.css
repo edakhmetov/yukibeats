@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'fs meridian';
+  src: url(../fonts/FSMeridianTrial-Medium.otf);
+}
+
+@font-face {
+  font-family: 'Aquatico';
+  src: url(../fonts/Aquatico-Regular.otf);
+}
+
+@font-face {
+  font-family: 'fs meridian thin';
+  src: url(../fonts/FSMeridianTrial-Thin.otf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,20 +55,20 @@ main {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   letter-spacing: 0.5px;
-  font-family: "Anton", sans-serif;
+  font-family: "FS Meridian", sans-serif;
 }
 
 .description {
-  font-size: 2.4rem;
+  font-size: 3rem;
   margin: 6rem 0;
-  font-family: "Bebas Neue", cursive;
+  font-family: "FS Meridian", cursive;
 }
 
 .contactText {
-  font-size: 1.9rem;
-  font-family: "Bebas Neue", cursive;
+  font-size: 2.4rem;
+  font-family: "FS Meridian", cursive;
 }
 
 .about {
@@ -101,7 +116,7 @@ h2 {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  font-family: "Anton", sans-serif;
+  font-family: "FS Meridian", sans-serif;
   font-size: 3rem;
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
@@ -213,7 +228,7 @@ nav {
           flex: 1;
   font-weight: lighter;
   font-size: 5.5rem;
-  font-family: "Racing Sans One", cursive;
+  font-family: "FS Meridian thin", sans-serif;
   text-shadow: 2px 2px 0px #fff, 7px 6px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -280,12 +295,12 @@ nav {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 60%;
-  max-height: 60rem;
+  max-height: 75rem;
   margin: auto 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "Bebas Neue", cursive;
+  font-family: "FS Meridian", cursive;
   overflow-y: auto;
   overflow: auto;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, white), to(rgba(255, 255, 255, 0))), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(70%, white)) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
@@ -319,13 +334,14 @@ nav {
 .name {
   text-align: center;
   width: 40%;
-  font-size: 2.7rem;
+  font-size: 3rem;
+  font-family: 'Aquatico';
 }
 
 .rate {
   text-align: center;
   width: 40%;
-  font-size: 2.3rem;
+  font-size: 2.7rem;
 }
 
 .songPlayer {
@@ -396,7 +412,7 @@ hr {
   height: 15px;
   margin: auto;
   border-radius: 50px;
-  background: #e3784d;
+  background: #646464;
 }
 
 .seekbar::-webkit-slider-thumb {
@@ -531,7 +547,6 @@ hr {
 .footer-container {
   background-color: black;
   width: 100%;
-  min-height: 5vh;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -558,11 +573,13 @@ hr {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  text-align: right;
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
   font-size: 1.6rem;
-  font-family: "Bebas Neue", cursive;
+  margin-right: 4rem;
+  font-family: 'FS Meridian thin';
   font-weight: lighter;
   letter-spacing: 2px;
 }
@@ -575,10 +592,6 @@ hr {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  font-size: 3rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -590,7 +603,7 @@ hr {
 }
 
 a#instagram {
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 a#instagram:hover {
@@ -604,7 +617,7 @@ a#instagram:hover {
 }
 
 a#soundcloud {
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 a#soundcloud:hover {
@@ -644,7 +657,7 @@ a#soundcloud:hover {
   display: inline-block;
   margin-bottom: 0.5rem;
   font-size: 2rem;
-  font-family: "Bebas Neue", cursive;
+  font-family: "FS Meridian", cursive;
 }
 
 .contact-input-group {
@@ -691,7 +704,7 @@ textarea.contact-form-control {
 
 .contact-btn {
   margin: auto;
-  font-family: "Bebas Neue", cursive;
+  font-family: "FS Meridian", cursive;
   background-color: #e3784d;
   outline: none;
   width: 100%;
