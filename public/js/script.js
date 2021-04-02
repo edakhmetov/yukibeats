@@ -6,7 +6,7 @@ const songPlayers = document.querySelectorAll('.songPlayer');
 const mainSection = document.querySelector('.main');
 const canvasElement = document.querySelector('canvas');
 const canvasContext = canvasElement.getContext('2d');
-
+const times = document.querySelectorAll('.time');
 const scroll = document.querySelector('.scroll');
 
 
@@ -60,24 +60,16 @@ const allSoundsById = [];
 const audioContextById = [];
 
 window.onload = function () {
-    canvasElement.width = window.innerWidth
-
+    canvasElement.width = window.innerWidth;
     if (canvasElement.width > 868) {
         checkbox.setAttribute('checked', "");
         canvasElement.style.display = "block";
     } else {
         canvasElement.style.display = "none";
     }
-    // const grd = canvasContext.createLinearGradient(0, 70, 0, 200);
-
-    // grd.addColorStop(0, "white");
-    // grd.addColorStop(1, "black");
-    // canvasContext.fillStyle = grd;
-    // canvasContext.fillRect(0, 0, canvasElement.clientWidth, canvasElement.clientHeight);
 };
 
 const renderVisualizer = function (audioID) {
-
     const createAudioContextiObj = function (sound) {
         // initialize new audio context
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -96,7 +88,6 @@ const renderVisualizer = function (audioID) {
         } else {
             analyser.fftSize = 2048; // set the bin size to condense amount of data
         }
-        // analyser.fftSize = 1024; // set the bin size to condense amount of data
 
         // array limited to unsigned int values 0-255
         const bufferLength = analyser.frequencyBinCount;
@@ -134,18 +125,9 @@ const renderVisualizer = function (audioID) {
         const freqDataMany = []; // reset array that holds the sound data for given number of audio sources
         const agg = []; // reset array that holds aggregate sound data
 
-        canvasContext.clearRect(0, 0, WIDTH, HEIGHT) // clear canvas at each frame
+        canvasContext.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas at each frame
         canvasContext.fillStyle = '#fff';
         canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
-        // const grd = canvasContext.createLinearGradient(0, 70, 0, 200);
-
-        // grd.addColorStop(0, "white");
-        // grd.addColorStop(1, "black");
-        // canvasContext.fillStyle = grd;
-        // canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
-
-
-
         audioContextArr = Object.values(audioContextById); // array with all the audio context information
 
         // for each element in that array, get the *current* frequency data and store it
@@ -153,7 +135,7 @@ const renderVisualizer = function (audioID) {
             let freqData = audioContextObj.freqData;
             audioContextObj.analyser.getByteFrequencyData(freqData); // populate with data
             freqDataMany.push(freqData);
-        })
+        });
 
         if (audioContextArr.length > 0) {
             // aggregate that data!
@@ -167,19 +149,15 @@ const renderVisualizer = function (audioID) {
             let x = 0;
 
             for (let i = 0; i < (barsCount); i++) {
-
                 barHeight = (agg[i] * 0.4);
                 let y = (HEIGHT - barHeight);
-
-                drawBar(canvasContext, x, y, barWidth, barHeight)
-
+                drawBar(canvasContext, x, y, barWidth, barHeight);
                 if (i < barsCount) {
                     x += barWidth + 1;
                 } else {
                     barWidth += barWidth + 1;
                     x += barWidth + 1;
                 }
-
             }
             function drawBar(canvasContext, x, y, barWidth, barHeight) {
                 let currentPos = audios[audioID].currentTime / audios[audioID].duration;
@@ -194,9 +172,7 @@ const renderVisualizer = function (audioID) {
         requestAnimationFrame(renderFrame); // this defines the callback function for what to do at each frame
     }
     renderFrame();
-}
-
-const times = document.querySelectorAll('.time');
+};
 
 audios.forEach(function (audio, i) {
     let playBtn = playBtns[i];
@@ -204,16 +180,13 @@ audios.forEach(function (audio, i) {
     let seekbar = seekbars[i];
     let time = times[i];
 
-
     // Play song
     let playSong = function () {
         songContainer.classList.add('play');
         playBtn.querySelector('i.fas').classList.remove('fa-play');
         playBtn.querySelector('i.fas').classList.add('fa-pause');
-        // mainLogo.classList.add('rotating');
         audio.play();
     }
-
 
     // Pause Song
     let pauseSong = function () {
@@ -225,11 +198,8 @@ audios.forEach(function (audio, i) {
 
     const resizeCanvas = function () {
         canvasElement.width = window.innerWidth;
-        // renderVisualizer(i);
     }
     window.addEventListener('resize', resizeCanvas);
-
-    // resizeCanvas();
 
     // update progress with music
     let setProgress = function () {
@@ -303,11 +273,4 @@ audios.forEach(function (audio, i) {
     }
 
     canvasElement.addEventListener('click', setVisualizer);
-
-    // 	***************TEST********************
-    // function progressUpdate(e) {
-    // 	let progressPercent = (audio.currentTime / audio.duration) * 100;
-    // 	progress.style.width = `${progressPercent}%`;
-    // };
-    // audio.addEventListener("timeupdate", progressUpdate);
 });
