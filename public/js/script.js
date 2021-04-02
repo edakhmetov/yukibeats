@@ -8,7 +8,8 @@ const canvasElement = document.querySelector('canvas');
 const canvasContext = canvasElement.getContext('2d');
 const times = document.querySelectorAll('.time');
 const scroll = document.querySelector('.scroll');
-
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
 function getDocHeight() {
     const D = document;
@@ -31,17 +32,10 @@ scroll.addEventListener('click', () => {
     scrollScreen();
 });
 
-
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
     hamburger.classList.toggle('toggle');
 });
-
-
-
 
 const checkbox = document.querySelector('.checkbox');
 
@@ -70,7 +64,7 @@ window.onload = function () {
 };
 
 const renderVisualizer = function (audioID) {
-    const createAudioContextiObj = function (sound) {
+    const createAudioContextObj = function (sound) {
         // initialize new audio context
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -104,7 +98,7 @@ const renderVisualizer = function (audioID) {
     Object.keys(allSoundsById).forEach(function (id) {
         // condition to avoid creating duplicate context. the visualizer won't break without it, but you will get a console error.
         if (!audioContextById[id]) {
-            audioContextById[id] = createAudioContextiObj(allSoundsById[id])
+            audioContextById[id] = createAudioContextObj(allSoundsById[id])
         }
     });
 
