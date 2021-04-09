@@ -200,7 +200,7 @@ audios.forEach(function (audio, i) {
         const cur = audio.currentTime;
         seekbar.value = cur;
         seekbar.style.background = 'linear-gradient(to right, #e3784d, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100))';
-        time.style.left = `${2+(98 * (cur / audio.duration * 98)) / 100}%`;
+        time.style.left = `${-1+(97 * (cur / audio.duration * 97)) / 100}%`;
         const currentMin = Math.floor(cur / 60);
         const currentSec = Math.floor(cur % 60);
         if (currentSec < 10) {
