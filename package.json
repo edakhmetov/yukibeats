@@ -1,7 +1,7 @@
 {
   "name": "v6",
   "version": "6.0.0",
-  "description": "yukibeata demo app",
+  "description": "yukibeats demo app",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
@@ -9,12 +9,13 @@
   "author": "edd",
   "license": "ISC",
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.11.11",
     "nodemailer": "^6.4.17",
-    "nodemailer-mailgun-transport": "^2.0.2"
+    "nodemailer-mailgun-transport": "^1.0.1"
   }
 }
