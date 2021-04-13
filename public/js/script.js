@@ -122,6 +122,7 @@ const renderWaveform = function (audioID) {
         canvasContext.clearRect(0, 0, width, height);
         x = draw(peaks.slice(0, playX), 0.5, 'red', x);
         draw(peaks.slice(playX), 1, 'orange', x);
+        requestAnimationFrame(waveform);
     };
     const draw = (data, lineWidth, color, x) => {
         canvasContext.lineWidth = lineWidth;
@@ -353,7 +354,10 @@ audios.forEach(function (audio, i) {
     audio.addEventListener('ended', pauseSong);
 
     // update the seekbar
-    audio.addEventListener('timeupdate', setProgress);
+    audio.addEventListener('timeupdate', () => {
+        setProgress();
+        // renderWaveform(i);
+    });
 
     // update the song when user touches the visualizer
     function setVisualizer(e) {
