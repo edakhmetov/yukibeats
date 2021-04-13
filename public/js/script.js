@@ -279,6 +279,7 @@ audios.forEach(function (_, i) {
 // };
 
 audios.forEach(function (audio, i) {
+    let canvasElement = canvases[i];
     let playBtn = playBtns[i];
     let songContainer = songContainers[i];
     let seekbar = seekbars[i];
@@ -378,5 +379,5 @@ audios.forEach(function (audio, i) {
         }
     }
 
-    // canvasElement.addEventListener('click', setVisualizer);
+    canvasElement.addEventListener('click', setVisualizer);
 });
