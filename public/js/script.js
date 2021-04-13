@@ -64,63 +64,77 @@ window.onload = function () {
 };
 
 const renderWaveform = function (audioID) {
+    let duration;
+    let globalPeaks = [];
+    const width = canvasElement.width;
+    const height = canvasElement.height;
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
     const drawAudio = url => {
         fetch(url)
             .then(response => response.arrayBuffer())
             .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-            .then(audioBuffer => draw(normalizeData(filterData(audioBuffer))));
+            .then(audioBuffer => setPeaks(audioBuffer));
     };
-    const filterData = audioBuffer => {
-        const rawData = audioBuffer.getChannelData(0);
-        const samples = 140;
-        const blockSize = Math.floor(rawData.length / samples);
-        const filteredData = [];
-        for (let i = 0; i < samples; i++) {
-            let blockStart = blockSize * i;
-            let sum = 0;
-            for (let j = 0; j < blockSize; j++) {
-                sum = sum + Math.abs(rawData[blockStart + j]);
-            }
-            filteredData.push(sum / blockSize);
-        }
-        return filteredData;
-    }
-    const normalizeData = filteredData => {
-        const multiplier = Math.pow(Math.max(...filteredData), -1);
-        return filteredData.map(n => n * multiplier)
-    }
-    const draw = normalizedData => {
-        const dpr = window.devicePixelRatio || 1;
-        const padding = 20;
-        canvasElement.width = canvasElement.offsetWidth * dpr;
-        canvasElement.height = (canvasElement.offsetHeight + padding * 2) * dpr;
-        canvasContext.scale(dpr, dpr);
-        canvasContext.translate(0, canvasElement.offsetHeight / 2 + padding);
-        const width = canvasElement.offsetWidth / normalizedData.length;
-        for (let i = 0; i < normalizedData.length; i++) {
-            const x = width * i;
-            let height = normalizedData[i] * canvasElement.offsetHeight - padding;
-            if (height < 0) {
-                height = 0;
-            } else if (height > canvasElement.offsetHeight / 2) {
-                height = height > canvasElement.offsetHeight / 2;
-            }
-            drawnLineSegment(canvasContext, x, height, width, (i + 1) % 2);
-        }
-    }
-    const drawnLineSegment = (ctx, x, height, width, isEven) => {
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = 'black';
-        ctx.beginPath();
-        height = isEven ? height : -height;
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.arc(x + width / 2, height, width / 2, Math.PI, 0, isEven);
-        ctx.lineTo(x + width, 0);
-        ctx.stroke();
-    }
 
+    const setPeaks = buffer => {
+        const peaks = [];
+        let min = 0;
+        let max = 0;
+        let top = 0;
+        let bottom = 0;
+        const segSize = Math.ceil(buffer.length / canvasElement.width);
+        duration = buffer.duration;
+        
+        for (let c = 0; c < buffer.numberOfChannels ; c++) {
+            const data = buffer.getChannelData(c);
+            for (let s = 0; s < width; s++) {
+                const start = ~~(s * segSize);
+                const end = ~~(start + segSize);
+                min = 0;
+                max = 0;
+                for (let i = start; i < end; i++) {
+                    min = data[i] < min ? data[i] : min;
+                    max = data[i] > max ? data[i] : max;
+                }
+                if (peaks[s]) {
+                    peaks[s][0] = peaks[s][0] < max ? max : peaks[s][0]
+                    peaks[s][1] = peaks[s][1] > min ? min : peaks[s][1]
+                }
+                peaks[s] = [max, min]
+            }
+        };
+        for (let i = 0; i < peaks.length; i++) {
+            max = peaks[i][0];
+            min = peaks[i][1];
+            top = ((height / 2) - (max * height / 2));
+            bottom = ((height / 2) - (min * height / 2));
+            peaks[i] = [top, bottom === top ? top + 1 : bottom];
+        };
+        globalPeaks = peaks;
+        waveform();
+    };
+    const waveform = () => {
+        const peaks = globalPeaks;
+        const time = audios[audioID].currentTime;
+        const playX = ~~(time / audios[audioID].duration * width);
+        let x = 0;
+        canvasContext.clearRect(0, 0, width, height);
+        x = draw(peaks.slice(0, playX), 0.5, 'red', x);
+        draw(peaks.slice(playX), 1, 'orange', x);
+    };
+    const draw = (data, lineWidth, color, x) => {
+        canvasContext.lineWidth = lineWidth;
+        canvasContext.strokeStyle = color;
+        canvasContext.beginPath();
+        data.forEach(v => {
+            canvasContext.moveTo(x, v[0]);
+            canvasContext.lineTo(x, v[1]);
+            x++
+        });
+        canvasContext.stroke();
+        return x;
+    }
     drawAudio(audios[audioID].src);
 }
 
