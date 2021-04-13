@@ -111,8 +111,8 @@ const renderWaveform = function (audioID) {
         for (let i = 0; i < peaks.length; i++) {
             max = peaks[i][0];
             min = peaks[i][1];
-            top = ((height / 2) - (max * height / 2));
-            bottom = ((height / 2) - (min * height / 2));
+            top = ((height / 2.5) - (max * height / 2.5));
+            bottom = ((height / 2.5) - (min * height / 2.5));
             peaks[i] = [top, bottom === top ? top + 1 : bottom];
         };
         globalPeaks = peaks;
@@ -309,8 +309,8 @@ audios.forEach(function (audio, i) {
     // update progress with music
     let setProgress = function () {
         const cur = audio.currentTime;
-        seekbar.value = cur;
-        seekbar.style.background = 'linear-gradient(to right, #e3784d, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100))';
+        // seekbar.value = cur;
+        // seekbar.style.background = 'linear-gradient(to right, #e3784d, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100))';
         time.style.left = `${-1 + (97 * (cur / audio.duration * 97)) / 100}%`;
         const currentMin = Math.floor(cur / 60);
         const currentSec = Math.floor(cur % 60);
@@ -322,15 +322,15 @@ audios.forEach(function (audio, i) {
     };
 
     // update the seekbar when user touches
-    seekbar.oninput = function () {
-        audio.currentTime = this.value;
-    };
+    // seekbar.oninput = function () {
+    //     audio.currentTime = this.value;
+    // };
 
     playBtn.addEventListener('click', function () {
         audio.id = i;
         audio.dataset.action = "off"
         allSoundsById[audio.id] = audio;
-        seekbar.max = Math.floor(audio.duration);
+        // seekbar.max = Math.floor(audio.duration);
         const isPlaying = songContainer.classList.contains('play');
         if (isPlaying) {
             pauseSong();
