@@ -73,7 +73,7 @@ h2 {
 
 .about {
   width: 40%;
-  margin: auto 0;
+  margin: 50rem 0 auto;
   text-align: center;
 }
 
@@ -295,8 +295,8 @@ nav {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 60%;
-  max-height: 75rem;
-  margin: auto 0;
+  max-height: 150rem;
+  margin: 10rem 0 auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -322,6 +322,11 @@ nav {
   margin: 1rem 0;
   padding: 1.5rem 0;
   padding-left: 4rem;
+  border-left-width: 1px;
+  border-left-style: solid;
+  -o-border-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+     border-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0)));
+     border-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 .songInfo {
@@ -333,15 +338,15 @@ nav {
 
 .name {
   text-align: center;
-  width: 40%;
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-family: "Aquatico", sans-serif;
+  margin-bottom: 1.5rem;
 }
 
 .rate {
   text-align: center;
-  width: 40%;
-  font-size: 2.7rem;
+  font-size: 2.4rem;
+  margin-left: 11rem;
 }
 
 .songPlayer {
@@ -484,6 +489,9 @@ hr {
   }
   .seekTime {
     margin-right: 0;
+  }
+  .rate {
+    margin-left: 3rem;
   }
 }
 

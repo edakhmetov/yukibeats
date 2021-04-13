@@ -1,37 +1,12 @@
 <%- include("partials/header") %>
 
     <div class="main">
-        <section class="about">
-            <h2>Welcome to Yukibeats</h2>
-            <p class="description">Here is the collection of my beats that i made throughout the years. I started
-                making
-                beats back in 2014 using my oold iPhone 5 and the garageband app. Nowadays, im using FL studio with
-                like
-                a thousand of different plugins and shit is crazy.
-                Make sure to check out my soundcloud and instagram
-            </p>
-            <button class="scroll">
-                <i class="fas fa-angle-double-down"></i>
-            </button>
-            <p class="contactText">if you like any of the beats presented on this website, make sure to contact me
-                using
-                email form or message me directly on Instagram.
-            </p>
-            <br>
-            <p class="contactText">
-                Toggle visualizer
-            </p>
-            <label class="switch">
-                <input class="checkbox" type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </section>
         <section class="music">
             <% audios.forEach(function(audio) { %>
                 <div class="songContainer">
                     <div class="songInfo">
                         <div class="name"><%= audio.name %></div>
-                        <div class="rate">bpm: <%= audio.bpm %></div>
+                        <!-- <div class="rate">bpm: <%= audio.bpm %></div> -->
                     </div>
                     <div class="songPlayer">
                         <audio class="audio" crossorigin="anonymous" src="<%= audio.source %>" type="<%= audio.type %>">
@@ -44,12 +19,33 @@
                         </div>
                         
                     </div>
-                    <!-- <div class="songInfo">
+                    <div class="songInfo">
                         <div class="rate">bpm: <%= audio.bpm %></div>
-                    </div> -->
+                    </div>
                     <hr>
                 </div>
                 <% }) %>
+        </section>
+        <section class="about">
+            <h2>Welcome to Yukibeats</h2>
+            <p class="description">Here is the collection of my beats that i made throughout the years. I started
+                making
+                beats back in 2014 using my oold iPhone 5 and the garageband app. Nowadays, im using FL studio with
+                like
+                a thousand of different plugins and shit is crazy.
+                Make sure to check out my soundcloud and instagram
+            </p>
+            <button class="scroll">
+                <i class="fas fa-angle-double-down"></i>
+            </button>
+            <br>
+            <p class="contactText">
+                Toggle visualizer
+            </p>
+            <label class="switch">
+                <input class="checkbox" type="checkbox">
+                <span class="slider"></span>
+            </label>
         </section>
     </div>
 
