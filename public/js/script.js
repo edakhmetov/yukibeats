@@ -97,8 +97,6 @@ const renderWaveform = function (audioID) {
                 min = 0.01;
                 max = 0.01;
                 for (let i = start; i < end; i++) {
-                    // min = data[i] < min ? data[i] : min;
-                    // max = data[i] > max ? data[i] : max;
                     if (data[i] < min) {
                         min = data[i];
                     } else {
@@ -256,31 +254,6 @@ const renderVisualizer = function (audioID) {
                 }
                 canvasContext.fillRect(x, y, barWidth, barHeight);
             }
-
-            // let x = 0;
-            // const step = (WIDTH / 2.0) / 1024;
-            // canvasContext.lineWidth = 4;
-            // canvasContext.strokeStyle = 'black';
-            // canvasContext.beginPath();
-            // agg.reverse();
-            // canvasContext.moveTo(x, HEIGHT / 2);
-            // x = drawLine(agg, x, step);
-            // agg.reverse();
-            // x = drawLine(agg, x, step);
-            // canvasContext.lineTo(WIDTH, HEIGHT / 2);
-            // canvasContext.stroke();
-
-            // function drawLine(data, x, step) {
-            //     const h = HEIGHT;
-            //     let y = 0;
-            //     data.forEach(function (v, i) {
-            //         y = h * (255 - v) / 510;
-            //         if (i % 2) y = h - y
-            //         canvasContext.lineTo(x, y)
-            //         x += step
-            //     });
-            //     return x
-            // }
         }
         requestAnimationFrame(renderFrame); // this defines the callback function for what to do at each frame
     }
@@ -291,7 +264,7 @@ audios.forEach(function (audio, i) {
     let canvasElement = canvases[i];
     let playBtn = playBtns[i];
     let songContainer = songContainers[i];
-    let seekbar = seekbars[i];
+    // let seekbar = seekbars[i];
     let time = times[i];
 
     // Play song
@@ -352,7 +325,6 @@ audios.forEach(function (audio, i) {
                 playBtns[k].querySelector('i.fas').classList.add('fa-play');
                 playBtns[k].querySelector('i.fas').classList.remove('fa-pause');
                 audios[k].pause();
-                // cancelAnimationFrame(renderVisualizer);
             }
             if (k === i) {
                 if (!songContainers[k].classList.contains('play')) {
@@ -361,7 +333,6 @@ audios.forEach(function (audio, i) {
                     playSong(i);
                     if (checkbox.checked) {
                         renderVisualizer(i);
-                        renderWaveform(i);
                     }
                 }
             } else {
