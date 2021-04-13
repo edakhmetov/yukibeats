@@ -4,12 +4,14 @@ const songContainers = document.querySelectorAll('.songContainer');
 const seekbars = document.querySelectorAll('.seekbar');
 const songPlayers = document.querySelectorAll('.songPlayer');
 const mainSection = document.querySelector('.main');
-const canvasElement = document.querySelector('canvas');
-const canvasContext = canvasElement.getContext('2d');
+// const canvasElement = document.querySelector('canvas');
+// const canvasContext = canvasElement.getContext('2d');
 const times = document.querySelectorAll('.time');
 const scroll = document.querySelector('.scroll');
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
+
+const canvases = document.querySelectorAll('canvas');
 
 function getDocHeight() {
     const D = document;
@@ -39,37 +41,39 @@ hamburger.addEventListener('click', () => {
 
 const checkbox = document.querySelector('.checkbox');
 
-checkbox.addEventListener('click', function () {
-    if (!checkbox.checked) {
-        checkbox.removeAttribute('checked');
-        canvasElement.style.display = "none";
-    } else {
-        checkbox.setAttribute('checked', "");
-        canvasElement.style.display = "block";
-        scrollScreen();
-    }
-});
+// checkbox.addEventListener('click', function () {
+//     if (!checkbox.checked) {
+//         checkbox.removeAttribute('checked');
+//         canvasElement.style.display = "none";
+//     } else {
+//         checkbox.setAttribute('checked', "");
+//         canvasElement.style.display = "block";
+//         scrollScreen();
+//     }
+// });
 
 const allSoundsById = [];
 const audioContextById = [];
 
-window.onload = function () {
-    canvasElement.width = window.innerWidth;
-    if (canvasElement.width > 868) {
-        checkbox.setAttribute('checked', "");
-        canvasElement.style.display = "block";
-    } else {
-        canvasElement.style.display = "none";
-    }
-};
+// window.onload = function () {
+//     canvasElement.width = window.innerWidth;
+//     if (canvasElement.width > 868) {
+//         checkbox.setAttribute('checked', "");
+//         canvasElement.style.display = "block";
+//     } else {
+//         canvasElement.style.display = "none";
+//     }
+// };
 
 const renderWaveform = function (audioID) {
+    let canvasElement = canvases[audioID];
+    let canvasContext = canvasElement.getContext('2d');
     let duration;
     let globalPeaks = [];
     const width = canvasElement.width;
     const height = canvasElement.height;
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    
+
     const drawAudio = url => {
         fetch(url)
             .then(response => response.arrayBuffer())
@@ -85,8 +89,8 @@ const renderWaveform = function (audioID) {
         let bottom = 0;
         const segSize = Math.ceil(buffer.length / canvasElement.width);
         duration = buffer.duration;
-        
-        for (let c = 0; c < buffer.numberOfChannels ; c++) {
+
+        for (let c = 0; c < buffer.numberOfChannels; c++) {
             const data = buffer.getChannelData(c);
             for (let s = 0; s < width; s++) {
                 const start = ~~(s * segSize);
@@ -138,6 +142,11 @@ const renderWaveform = function (audioID) {
     }
     drawAudio(audios[audioID].src);
 }
+
+audios.forEach(function (_, i) {
+    renderWaveform(i);
+});
+
 
 // const renderVisualizer = function (audioID) {
 //     const createAudioContextObj = function (sound) {
@@ -291,10 +300,10 @@ audios.forEach(function (audio, i) {
         audio.pause();
     }
 
-    const resizeCanvas = function () {
-        canvasElement.width = window.innerWidth;
-    }
-    window.addEventListener('resize', resizeCanvas);
+    // const resizeCanvas = function () {
+    //     canvasElement.width = window.innerWidth;
+    // }
+    // window.addEventListener('resize', resizeCanvas);
 
     // update progress with music
     let setProgress = function () {
@@ -354,10 +363,7 @@ audios.forEach(function (audio, i) {
     audio.addEventListener('ended', pauseSong);
 
     // update the seekbar
-    audio.addEventListener('timeupdate', () => {
-        setProgress();
-        // renderWaveform(i);
-    });
+    audio.addEventListener('timeupdate', setProgress);
 
     // update the song when user touches the visualizer
     function setVisualizer(e) {
@@ -372,5 +378,5 @@ audios.forEach(function (audio, i) {
         }
     }
 
-    canvasElement.addEventListener('click', setVisualizer);
+    // canvasElement.addEventListener('click', setVisualizer);
 });

@@ -6,7 +6,6 @@
                 <div class="songContainer">
                     <div class="songInfo">
                         <div class="name"><%= audio.name %></div>
-                        <!-- <div class="rate">bpm: <%= audio.bpm %></div> -->
                     </div>
                     <div class="songPlayer">
                         <audio class="audio" crossorigin="anonymous" src="<%= audio.source %>" type="<%= audio.type %>">
@@ -16,6 +15,9 @@
                         <div class="seekTime">
                             <div class="time">0:00</div>
                             <input type="range" class="seekbar" value="0">
+                        </div>
+                        <div class="waveform">
+                            <canvas width="200" height="80"></canvas>
                         </div>
                         
                     </div>
@@ -43,7 +45,7 @@
                 Toggle visualizer
             </p>
             <label class="switch">
-                <input class="checkbox" type="checkbox">
+                <input class="checkbox" type="checkbox" checked>
                 <span class="slider"></span>
             </label>
         </section>
