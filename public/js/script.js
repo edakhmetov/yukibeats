@@ -140,27 +140,52 @@ const renderVisualizer = function (audioID) {
                 });
             };
 
-            let x = 0;
+            // let x = 0;
 
-            for (let i = 0; i < (barsCount); i++) {
-                barHeight = (agg[i] * 0.4);
-                let y = (HEIGHT - barHeight);
-                drawBar(canvasContext, x, y, barWidth, barHeight);
-                if (i < barsCount) {
-                    x += barWidth + 1;
-                } else {
-                    barWidth += barWidth + 1;
-                    x += barWidth + 1;
-                }
-            }
-            function drawBar(canvasContext, x, y, barWidth, barHeight) {
-                let currentPos = audios[audioID].currentTime / audios[audioID].duration;
-                if (x / WIDTH >= currentPos) {
-                    canvasContext.fillStyle = `rgb(100, 100, 100)`;
-                } else {
-                    canvasContext.fillStyle = `#e3784d`;
-                }
-                canvasContext.fillRect(x, y, barWidth, barHeight);
+            // for (let i = 0; i < (barsCount); i++) {
+            //     barHeight = (agg[i] * 0.4);
+            //     let y = (HEIGHT - barHeight);
+            //     drawBar(canvasContext, x, y, barWidth, barHeight);
+            //     if (i < barsCount) {
+            //         x += barWidth + 1;
+            //     } else {
+            //         barWidth += barWidth + 1;
+            //         x += barWidth + 1;
+            //     }
+            // }
+            // function drawBar(canvasContext, x, y, barWidth, barHeight) {
+            //     let currentPos = audios[audioID].currentTime / audios[audioID].duration;
+            //     if (x / WIDTH >= currentPos) {
+            //         canvasContext.fillStyle = `rgb(100, 100, 100)`;
+            //     } else {
+            //         canvasContext.fillStyle = `#e3784d`;
+            //     }
+            //     canvasContext.fillRect(x, y, barWidth, barHeight);
+            // }
+            
+            let x = 0;
+            const step = (WIDTH/2.0)/1024;
+            canvasContext.lineWidth = 4;
+            canvasContext.strokeStyle = 'black';
+            canvasContext.beginPath();
+            agg.reverse();
+            canvasContext.moveTo(x, HEIGHT/2);
+            x = drawLine(agg, x, step);
+            agg.reverse();
+            x = drawLine(agg, x, step);
+            canvasContext.lineTo(WIDTH, HEIGHT/2);
+            canvasContext.stroke();
+
+            function drawLine(data, x, step) {
+                const h = HEIGHT;
+                let y = 0;
+                data.forEach(function(v, i) {
+                    y = h * (255 - v) / 510;
+                    if (i % 2) y = h - y
+                    canvasContext.lineTo(x, y)
+                    x += step
+                });
+                return x
             }
         }
         requestAnimationFrame(renderFrame); // this defines the callback function for what to do at each frame
@@ -232,6 +257,7 @@ audios.forEach(function (audio, i) {
                 playBtns[k].querySelector('i.fas').classList.add('fa-play');
                 playBtns[k].querySelector('i.fas').classList.remove('fa-pause');
                 audios[k].pause();
+                cancelAnimationFrame(renderVisualizer);
             }
             if (k === i) {
                 if (!songContainers[k].classList.contains('play')) {
