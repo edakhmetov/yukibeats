@@ -120,8 +120,8 @@ const renderWaveform = function (audioID) {
         const playX = ~~(time / audios[audioID].duration * width);
         let x = 0;
         canvasContext.clearRect(0, 0, width, height);
-        x = draw(peaks.slice(0, playX), 0.5, 'red', x);
-        draw(peaks.slice(playX), 1, 'orange', x);
+        x = draw(peaks.slice(0, playX), 1, '#e3784d', x);
+        draw(peaks.slice(playX), 1, 'rgb(100, 100, 100)', x);
         requestAnimationFrame(waveform);
     };
     const draw = (data, lineWidth, color, x) => {
