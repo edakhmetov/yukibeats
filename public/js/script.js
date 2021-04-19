@@ -57,6 +57,9 @@ const audioContextById = [];
 
 window.onload = function () {
     mainCanvas.width = window.innerWidth;
+    audios.forEach(function (_, i) {
+        renderWaveform(i);
+    });
     if (mainCanvas.width > 868) {
         checkbox.setAttribute('checked', "");
         mainCanvas.style.display = "block";
@@ -153,9 +156,9 @@ const renderWaveform = function (audioID) {
     drawAudio(audios[audioID].src);
 }
 
-audios.forEach(function (_, i) {
-    renderWaveform(i);
-});
+// audios.forEach(function (_, i) {
+//     renderWaveform(i);
+// });
 
 
 const renderVisualizer = function (audioID) {
