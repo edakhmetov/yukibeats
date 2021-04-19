@@ -55,21 +55,7 @@ checkbox.addEventListener('click', function () {
 const allSoundsById = [];
 const audioContextById = [];
 
-window.onload = function () {
-    mainCanvas.width = window.innerWidth;
-    audios.forEach(function (_, i) {
-        renderWaveform(i);
-    });
-    if (mainCanvas.width > 868) {
-        checkbox.setAttribute('checked', "");
-        mainCanvas.style.display = "block";
-    } else {
-        mainCanvas.style.display = "none";
-        canvases.forEach(function(canvas) {
-            canvas.width = 200;
-        });
-    }
-};
+
 
 const renderWaveform = function (audioID) {
     let canvasElement = canvases[audioID];
@@ -80,13 +66,13 @@ const renderWaveform = function (audioID) {
     const height = canvasElement.height;
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    const drawAudio = function(url) {
+    function drawAudio(url) {
         fetch(url)
             .then(response => response.arrayBuffer())
             .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
             .then(audioBuffer => setPeaks(audioBuffer));
     };
-    const setPeaks = function(buffer) {
+    function setPeaks(buffer) {
         const peaks = [];
         let min = 0;
         let max = 0;
@@ -131,7 +117,7 @@ const renderWaveform = function (audioID) {
         globalPeaks = peaks;
         waveform();
     };
-    const waveform = function() {
+    function waveform() {
         const peaks = globalPeaks;
         const time = audios[audioID].currentTime;
         const playX = time / audios[audioID].duration * width;
@@ -141,7 +127,7 @@ const renderWaveform = function (audioID) {
         draw(peaks.slice(playX), 1, 'rgb(100, 100, 100)', x);
         requestAnimationFrame(waveform);
     };
-    const draw = function(data, lineWidth, color, x) {
+    function draw(data, lineWidth, color, x) {
         canvasContext.lineWidth = lineWidth;
         canvasContext.strokeStyle = color;
         canvasContext.beginPath();
@@ -155,6 +141,22 @@ const renderWaveform = function (audioID) {
     }
     drawAudio(audios[audioID].src);
 }
+
+window.onload = function () {
+    mainCanvas.width = window.innerWidth;
+    audios.forEach(function (_, i) {
+        renderWaveform(i);
+    });
+    if (mainCanvas.width > 868) {
+        checkbox.setAttribute('checked', "");
+        mainCanvas.style.display = "block";
+    } else {
+        mainCanvas.style.display = "none";
+        canvases.forEach(function(canvas) {
+            canvas.width = 200;
+        });
+    }
+};
 
 // audios.forEach(function (_, i) {
 //     renderWaveform(i);
