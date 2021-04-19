@@ -69,6 +69,7 @@ const renderWaveform = function (audioID) {
     function drawAudio(url) {
         fetch(url)
             .then(function(response) {
+                // console.log(response.arrayBuffer());
                 return response.arrayBuffer()
             })
             .then(function(arrayBuffer) {
@@ -76,7 +77,10 @@ const renderWaveform = function (audioID) {
             })
             .then(function(audioBuffer) {
                 return setPeaks(audioBuffer)
-            });
+            })
+            .catch(function(err) {
+                console.log(err)
+            })
     };
     function setPeaks(buffer) {
         const peaks = [];
