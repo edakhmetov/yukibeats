@@ -63,7 +63,7 @@ window.onload = function () {
     } else {
         mainCanvas.style.display = "none";
         canvases.forEach((canvas) => {
-            canvas.width = 250;
+            canvas.width = 200;
         });
     }
 };
