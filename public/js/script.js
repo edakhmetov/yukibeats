@@ -62,6 +62,9 @@ window.onload = function () {
         mainCanvas.style.display = "block";
     } else {
         mainCanvas.style.display = "none";
+        canvases.forEach((canvas) => {
+            canvas.width = 250;
+        });
     }
 };
 

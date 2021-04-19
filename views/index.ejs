@@ -5,13 +5,15 @@
             <% audios.forEach(function(audio) { %>
                 <div class="songContainer">
                     <div class="songInfo">
-                        <div class="name"><%= audio.name %></div>
+                        <div class="name">
+                            <%= audio.name %>
+                        </div>
                     </div>
                     <div class="songPlayer">
                         <audio class="audio" crossorigin="anonymous" src="<%= audio.source %>" type="<%= audio.type %>">
                         </audio>
                         <button class="playBtn"><i class="fas fa-play"></i></button>
-                        
+
                         <div class="seekTime">
                             <div class="time">0:00</div>
                             <!-- <input type="range" class="seekbar" value="0"> -->
@@ -19,11 +21,10 @@
                                 <canvas width="350" height="80" class="waveformCanvases"></canvas>
                             </div>
                         </div>
-                        
-                        
                     </div>
                     <div class="songInfo">
-                        <div class="rate">bpm: <%= audio.bpm %></div>
+                        <div class="rate">bpm: <%= audio.bpm %>
+                        </div>
                     </div>
                     <hr>
                 </div>
