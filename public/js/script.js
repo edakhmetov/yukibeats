@@ -73,7 +73,9 @@ const renderWaveform = function (audioID) {
                 return response.arrayBuffer()
             })
             .then(function(arrayBuffer) {
-                return audioContext.decodeAudioData(arrayBuffer)
+                audioContext.decodeAudioData(arrayBuffer, function(buffer) {
+                    return buffer;
+                })
             })
             .then(function(audioBuffer) {
                 return setPeaks(audioBuffer)
