@@ -145,6 +145,7 @@ const renderWaveform = function (audioID) {
 window.onload = function () {
     mainCanvas.width = window.innerWidth;
     audios.forEach(function (_, i) {
+        console.log(_);
         renderWaveform(i);
     });
     if (mainCanvas.width > 868) {
@@ -157,11 +158,6 @@ window.onload = function () {
         });
     }
 };
-
-// audios.forEach(function (_, i) {
-//     renderWaveform(i);
-// });
-
 
 const renderVisualizer = function (audioID) {
     const createAudioContextObj = function (sound) {
