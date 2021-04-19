@@ -101,10 +101,20 @@ h2 {
   }
   .about {
     width: 100%;
-    margin-top: 4rem;
+    margin: 0;
   }
   .scroll {
     display: inline;
+  }
+  .music {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .about {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 
@@ -296,7 +306,7 @@ nav {
           flex-direction: column;
   width: 55%;
   max-height: 150rem;
-  margin: 10rem 0 auto;
+  margin: 10rem auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -398,14 +408,13 @@ hr {
 }
 
 .time {
-  display: none;
+  display: block;
   position: absolute;
   top: 7;
   width: 30px;
   background-color: rgba(227, 120, 77, 0.7);
   border: 1px solid black;
   border-radius: 20px;
-  left: -1%;
   text-align: center;
 }
 

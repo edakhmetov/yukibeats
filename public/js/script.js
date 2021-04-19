@@ -131,7 +131,7 @@ const renderWaveform = function (audioID) {
     const waveform = () => {
         const peaks = globalPeaks;
         const time = audios[audioID].currentTime;
-        const playX = ~~(time / audios[audioID].duration * width);
+        const playX = time / audios[audioID].duration * width;
         let x = 0;
         canvasContext.clearRect(0, 0, width, height);
         x = draw(peaks.slice(0, playX), 1, '#e3784d', x);
@@ -296,7 +296,7 @@ audios.forEach(function (audio, i) {
         const cur = audio.currentTime;
         // seekbar.value = cur;
         // seekbar.style.background = 'linear-gradient(to right, #e3784d, #e3784d ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100) ' + (seekbar.value / audio.duration) * 100 + '%, rgb(100, 100, 100))';
-        time.style.left = `${-1 + (97 * (cur / audio.duration * 97)) / 100}%`;
+        time.style.left = `${0 + (100 * (cur / audio.duration * 100)) / 100}%`;
         const currentMin = Math.floor(cur / 60);
         const currentSec = Math.floor(cur % 60);
         if (currentSec < 10) {
@@ -352,6 +352,7 @@ audios.forEach(function (audio, i) {
     // update the song when user touches the visualizer
     function setVisualizer(e) {
         const width = this.clientWidth;
+        // const width = canvasElement.width;
         const clickX = e.offsetX;
 
         if (songContainer.classList.contains('play')) {
@@ -363,5 +364,5 @@ audios.forEach(function (audio, i) {
     }
 
     canvasElement.addEventListener('click', setVisualizer);
-    mainCanvas.addEventListener('click', setVisualizer);
+    // mainCanvas.addEventListener('click', setVisualizer);
 });
