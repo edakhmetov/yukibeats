@@ -62,7 +62,7 @@ window.onload = function () {
         mainCanvas.style.display = "block";
     } else {
         mainCanvas.style.display = "none";
-        canvases.forEach((canvas) => {
+        canvases.forEach(function(canvas) {
             canvas.width = 200;
         });
     }
@@ -83,7 +83,7 @@ const renderWaveform = function (audioID) {
             .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
             .then(audioBuffer => setPeaks(audioBuffer));
     };
-    const setPeaks = buffer => {
+    const setPeaks = function(buffer) {
         const peaks = [];
         let min = 0;
         let max = 0;
@@ -128,7 +128,7 @@ const renderWaveform = function (audioID) {
         globalPeaks = peaks;
         waveform();
     };
-    const waveform = () => {
+    const waveform = function() {
         const peaks = globalPeaks;
         const time = audios[audioID].currentTime;
         const playX = time / audios[audioID].duration * width;
@@ -138,11 +138,11 @@ const renderWaveform = function (audioID) {
         draw(peaks.slice(playX), 1, 'rgb(100, 100, 100)', x);
         requestAnimationFrame(waveform);
     };
-    const draw = (data, lineWidth, color, x) => {
+    const draw = function(data, lineWidth, color, x) {
         canvasContext.lineWidth = lineWidth;
         canvasContext.strokeStyle = color;
         canvasContext.beginPath();
-        data.forEach(v => {
+        data.forEach(function(v) {
             canvasContext.moveTo(x, v[0]);
             canvasContext.lineTo(x, v[1]);
             x++
@@ -177,16 +177,13 @@ const renderVisualizer = function (audioID) {
         } else {
             analyser.fftSize = 2048; // set the bin size to condense amount of data
         }
-
         // array limited to unsigned int values 0-255
         const bufferLength = analyser.frequencyBinCount;
         const freqData = new Uint8Array(bufferLength);
-
         audioContextObj = {
             freqData, // note: at this time, this area is unpopulated!
             analyser
         }
-
         return audioContextObj;
     };
 
@@ -196,8 +193,6 @@ const renderVisualizer = function (audioID) {
             audioContextById[id] = createAudioContextObj(allSoundsById[id])
         }
     });
-
-
 
     const WIDTH = mainCanvas.clientWidth;
     const HEIGHT = mainCanvas.clientHeight;
