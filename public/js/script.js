@@ -144,10 +144,10 @@ const renderWaveform = function (audioID) {
 
 window.onload = function () {
     mainCanvas.width = window.innerWidth;
-    audios.forEach(function (_, i) {
-        console.log(_);
-        renderWaveform(i);
-    });
+    // audios.forEach(function (_, i) {
+    //     console.log(_);
+    //     renderWaveform(i);
+    // });
     if (mainCanvas.width > 868) {
         checkbox.setAttribute('checked', "");
         mainCanvas.style.display = "block";
@@ -317,6 +317,7 @@ audios.forEach(function (audio, i) {
             pauseSong();
         } else {
             playSong();
+            renderWaveform(i);
         }
         for (let k = 0; k < audios.length; k++) {
             const pauseOtherSongs = function () {
