@@ -77,7 +77,7 @@ const renderWaveform = function (audioID) {
     const height = canvasElement.height;
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    const drawAudio = url => {
+    const drawAudio = function(url) {
         fetch(url)
             .then(response => response.arrayBuffer())
             .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
@@ -95,8 +95,8 @@ const renderWaveform = function (audioID) {
         for (let c = 0; c < buffer.numberOfChannels; c++) {
             const data = buffer.getChannelData(c);
             for (let s = 0; s < width; s++) {
-                const start = ~~(s * segSize);
-                const end = ~~(start + segSize);
+                const start = s * segSize;
+                const end = start + segSize;
                 min = 0.01;
                 max = 0.01;
                 for (let i = start; i < end; i++) {
