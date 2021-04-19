@@ -102,7 +102,7 @@ const renderWaveform = function (audioID) {
                     if (data[i] < min) {
                         min = data[i];
                     } else {
-                        min = min;
+                        min = min/2;
                     }
                     if (data[i] > max) {
                         max = data[i];
@@ -342,6 +342,7 @@ audios.forEach(function (audio, i) {
                     playSong(i);
                     if (checkbox.checked) {
                         renderVisualizer(i);
+                        renderWaveform(i);
                     }
                 }
             } else {
