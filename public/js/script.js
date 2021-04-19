@@ -68,9 +68,15 @@ const renderWaveform = function (audioID) {
 
     function drawAudio(url) {
         fetch(url)
-            .then(function (response) {response.arrayBuffer()})
-            .then(function(arrayBuffer) {audioContext.decodeAudioData(arrayBuffer)})
-            .then(function(audioBuffer) {setPeaks(audioBuffer)});
+            .then(function(response) {
+                return response.arrayBuffer()
+            })
+            .then(function(arrayBuffer) {
+                return audioContext.decodeAudioData(arrayBuffer)
+            })
+            .then(function(audioBuffer) {
+                return setPeaks(audioBuffer)
+            });
     };
     function setPeaks(buffer) {
         const peaks = [];
