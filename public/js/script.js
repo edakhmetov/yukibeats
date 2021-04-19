@@ -68,9 +68,9 @@ const renderWaveform = function (audioID) {
 
     function drawAudio(url) {
         fetch(url)
-            .then(response => response.arrayBuffer())
-            .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-            .then(audioBuffer => setPeaks(audioBuffer));
+            .then(function (response) {response.arrayBuffer()})
+            .then(function(arrayBuffer) {audioContext.decodeAudioData(arrayBuffer)})
+            .then(function(audioBuffer) {setPeaks(audioBuffer)});
     };
     function setPeaks(buffer) {
         const peaks = [];
@@ -144,10 +144,9 @@ const renderWaveform = function (audioID) {
 
 window.onload = function () {
     mainCanvas.width = window.innerWidth;
-    // audios.forEach(function (_, i) {
-    //     console.log(_);
-    //     renderWaveform(i);
-    // });
+    audios.forEach(function (_, i) {
+        renderWaveform(i);
+    });
     if (mainCanvas.width > 868) {
         checkbox.setAttribute('checked', "");
         mainCanvas.style.display = "block";
@@ -317,7 +316,7 @@ audios.forEach(function (audio, i) {
             pauseSong();
         } else {
             playSong();
-            renderWaveform(i);
+            // renderWaveform(i);
         }
         for (let k = 0; k < audios.length; k++) {
             const pauseOtherSongs = function () {
