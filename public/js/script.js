@@ -64,23 +64,46 @@ const renderWaveform = function (audioID) {
     let globalPeaks = [];
     const width = canvasElement.width;
     const height = canvasElement.height;
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
     function drawAudio(url) {
+        // fetch(url)
+        //     .then(function(response) {
+        //         return response.arrayBuffer()
+        //         // return console.log(response)
+        //     })
+        //     .then(function(arrayBuffer) {
+        //         return audioContext.decodeAudioData(arrayBuffer)
+        //     })
+        //     .then(function(audioBuffer) {
+        //         return setPeaks(audioBuffer)
+        //     })
+        //     .catch(function(err) {
+        //         console.log(err)
+        //     });
+        
         fetch(url)
             .then(function(response) {
                 return response.arrayBuffer()
+                // return console.log(response)
             })
             .then(function(arrayBuffer) {
-                return audioContext.decodeAudioData(arrayBuffer)
-            })
-            .then(function(audioBuffer) {
-                return setPeaks(audioBuffer)
+                return decode(arrayBuffer)
             })
             .catch(function(err) {
                 console.log(err)
-            })
+            });
     };
+
+    function decode(arrayBuffer) {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        audioContext.decodeAudioData(arrayBuffer, function(audioBuffer) {
+            setPeaks(audioBuffer)
+        }, function(err) {
+            console.log(err);
+        })
+    }
+
     function setPeaks(buffer) {
         const peaks = [];
         let min = 0;
