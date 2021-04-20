@@ -60,32 +60,15 @@ const audioContextById = [];
 const renderWaveform = function (audioID) {
     let canvasElement = canvases[audioID];
     let canvasContext = canvasElement.getContext('2d');
-    let duration;
     let globalPeaks = [];
     const width = canvasElement.width;
     const height = canvasElement.height;
-    // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
     function drawAudio(url) {
-        // fetch(url)
-        //     .then(function(response) {
-        //         return response.arrayBuffer()
-        //         // return console.log(response)
-        //     })
-        //     .then(function(arrayBuffer) {
-        //         return audioContext.decodeAudioData(arrayBuffer)
-        //     })
-        //     .then(function(audioBuffer) {
-        //         return setPeaks(audioBuffer)
-        //     })
-        //     .catch(function(err) {
-        //         console.log(err)
-        //     });
-        
         fetch(url)
             .then(function(response) {
                 return response.arrayBuffer()
-                // return console.log(response)
             })
             .then(function(arrayBuffer) {
                 return decode(arrayBuffer)
@@ -96,7 +79,6 @@ const renderWaveform = function (audioID) {
     };
 
     function decode(arrayBuffer) {
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         audioContext.decodeAudioData(arrayBuffer, function(audioBuffer) {
             setPeaks(audioBuffer)
         }, function(err) {
@@ -112,7 +94,6 @@ const renderWaveform = function (audioID) {
         let bottom = 0;
         const segSize = Math.ceil(buffer.length / canvasElement.width);
         duration = buffer.duration;
-
         for (let c = 0; c < buffer.numberOfChannels; c++) {
             const data = buffer.getChannelData(c);
             for (let s = 0; s < width; s++) {
@@ -348,7 +329,6 @@ audios.forEach(function (audio, i) {
             pauseSong();
         } else {
             playSong();
-            // renderWaveform(i);
         }
         for (let k = 0; k < audios.length; k++) {
             const pauseOtherSongs = function () {
@@ -364,7 +344,6 @@ audios.forEach(function (audio, i) {
                     playSong(i);
                     if (checkbox.checked) {
                         renderVisualizer(i);
-                        renderWaveform(i);
                     }
                 }
             } else {
