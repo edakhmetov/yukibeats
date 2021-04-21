@@ -160,12 +160,12 @@ const renderWaveform = function (audioID) {
     };
     function drawTime(time) {
         const timeStr = timeFormat(time);
-        const offset = 3;
+        const offset = 20;
         const textWidth = ~~canvasContext.measureText(timeStr).width;
         const playX = time / audios[audioID].duration * width;
         const textX = playX > (width - textWidth - offset)
-            ? playX - textWidth - offset
-            : playX + offset;
+            ? playX - textWidth
+            : playX;
         // const textY = this.playtimeTextBottom
         //   ? this.canvHeight - this.playtimeFontSize + offset
         //   : this.playtimeFontSize + offset
@@ -185,11 +185,11 @@ window.onload = function () {
         let width = mainCanvas.width * 0.25;
         resizeCanvases(width);
     } else if (mainCanvas.width > 500) {
-        let width = mainCanvas.width * 0.6;
+        let width = mainCanvas.width * 0.65;
         resizeCanvases(width);
     } else {
         mainCanvas.style.display = "none";
-        resizeCanvases(250);
+        resizeCanvases(270);
     }
     audios.forEach(function (_, i) {
         renderWaveform(i);
