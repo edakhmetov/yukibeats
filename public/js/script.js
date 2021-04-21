@@ -238,7 +238,6 @@ const renderVisualizer = function (audioID) {
         mainCanvasContext.fillStyle = '#fff';
         mainCanvasContext.fillRect(0, 0, WIDTH, HEIGHT);
         audioContextArr = Object.values(audioContextById);
-        // for each element in that array, get the *current* frequency data and store it
         audioContextArr.forEach(function (audioContextObj) {
             let freqData = audioContextObj.freqData;
             audioContextObj.analyser.getByteFrequencyData(freqData);
@@ -283,14 +282,12 @@ audios.forEach(function (audio, i) {
     // let seekbar = seekbars[i];
     let time = times[i];
 
-    // Play song
     let playSong = function () {
         songContainer.classList.add('play');
         playBtn.querySelector('i.fas').classList.remove('fa-play');
         playBtn.querySelector('i.fas').classList.add('fa-pause');
         audio.play();
     };
-    // Pause Song
     let pauseSong = function () {
         songContainer.classList.remove('play');
         playBtn.querySelector('i.fas').classList.add('fa-play');
@@ -301,8 +298,6 @@ audios.forEach(function (audio, i) {
         mainCanvas.width = window.innerWidth;
     };
     window.addEventListener('resize', resizeCanvas);
-
-    // update progress with music
     let setProgress = function () {
         const cur = audio.currentTime;
         // seekbar.value = cur;
@@ -316,12 +311,10 @@ audios.forEach(function (audio, i) {
             time.innerHTML = `${currentMin}:${currentSec}`;
         }
     };
-
     // update the seekbar when user touches
     // seekbar.oninput = function () {
     //     audio.currentTime = this.value;
     // };
-
     playBtn.addEventListener('click', function () {
         audio.id = i;
         audio.dataset.action = "off"
@@ -355,11 +348,8 @@ audios.forEach(function (audio, i) {
         }
     });
     audio.addEventListener('ended', pauseSong);
-
-    // update the seekbar
     audio.addEventListener('timeupdate', setProgress);
 
-    // update the song when user touches the visualizer
     function setVisualizer(e) {
         const width = this.clientWidth;
         const clickX = e.offsetX;
@@ -370,8 +360,7 @@ audios.forEach(function (audio, i) {
         } else {
             return
         }
-    }
-
+    };
     canvasElement.addEventListener('click', setVisualizer);
     mainCanvas.addEventListener('click', setVisualizer);
 });
