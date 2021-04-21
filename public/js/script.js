@@ -64,6 +64,7 @@ const renderWaveform = function (audioID) {
     const width = canvasElement.width;
     const height = canvasElement.height;
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let time = audios[audioID].currentTime;
 
     function drawAudio(url) {
         fetch(url)
@@ -138,6 +139,7 @@ const renderWaveform = function (audioID) {
         canvasContext.clearRect(0, 0, width, height);
         x = draw(peaks.slice(0, playX), 1, '#e3784d', x);
         draw(peaks.slice(playX), 1, 'rgb(100, 100, 100)', x);
+        drawTime(time);
         requestAnimationFrame(waveform);
     };
     function draw(data, lineWidth, color, x) {
@@ -151,17 +153,53 @@ const renderWaveform = function (audioID) {
         });
         canvasContext.stroke();
         return x;
-    }
+    };
+    function timeFormat(timeSec) {
+        let frmStr = ''
+        const time = parseFloat(timeSec)
+        if (isNaN(time)) {
+          return frmStr
+        }
+        const min = ~~(time / 60)
+        const sec = ~~(time % 60)
+        const ms = ~~(time % 1 * 1000)
+        frmStr = (min < 10) ? `0${min}:` : `${min}:`
+        frmStr += `0${sec}`.substr(-2)
+        // if (this.playtimeWithMs) {
+        //   frmStr += '.' + `00${ms}`.substr(-3)
+        // }
+        return frmStr
+      };
+      function drawTime(time) {
+        const timeStr = timeFormat(time)
+        const offset = 3
+        const textWidth = ~~canvasContext.measureText(timeStr).width
+        const playX = time / audios[audioID].duration * width;
+        const textX = playX > (width - textWidth - offset)
+          ? playX - textWidth - offset
+          : playX + offset
+        // const textY = this.playtimeTextBottom
+        //   ? this.canvHeight - this.playtimeFontSize + offset
+        //   : this.playtimeFontSize + offset
+        const textY = 12 + offset;
+        canvasContext.fillStyle = 'grey';
+        canvasContext.font = "12px 'Aquatico'"
+        canvasContext.fillText(timeStr, textX, textY)
+      };
+
     drawAudio(audios[audioID].src);
 }
 
 window.onload = function () {
     mainCanvas.width = window.innerWidth;
-    if (mainCanvas.width > 768 && mainCanvas.width <= 1920) {
+    if (mainCanvas.width > 868) {
         checkbox.setAttribute('checked', "");
         mainCanvas.style.display = "block";
-    } else if (mainCanvas.width > 1920) {
-        resizeCanvases(700);
+        let width = mainCanvas.width*0.25;
+        resizeCanvases(width);
+    } else if (mainCanvas.width > 500) {
+        let width = mainCanvas.width*0.6;
+        resizeCanvases(width);
     } else {
         mainCanvas.style.display = "none";
         resizeCanvases(250);
