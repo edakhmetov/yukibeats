@@ -260,7 +260,7 @@ const renderVisualizer = function (audioID) {
                 let reverseX = WIDTH - x;
                 drawBar(mainCanvasContext, x, y, barWidth, barHeight);
                 drawBar(mainCanvasContext, reverseX, y, reverseBarWidth, barHeight);
-                x += barWidth + 1;
+                x += barWidth + 1.002;
             };
             function drawBar(canvasContext, x, y, barWidth, barHeight) {
                 let currentPos = audios[audioID].currentTime / audios[audioID].duration;
