@@ -157,19 +157,25 @@ const renderWaveform = function (audioID) {
 
 window.onload = function () {
     mainCanvas.width = window.innerWidth;
-    if (mainCanvas.width > 868) {
+    if (mainCanvas.width > 768 && mainCanvas.width <= 1920) {
         checkbox.setAttribute('checked', "");
         mainCanvas.style.display = "block";
+    } else if (mainCanvas.width > 1920) {
+        resizeCanvases(700);
     } else {
         mainCanvas.style.display = "none";
-        canvases.forEach(function(canvas) {
-            canvas.width = 200;
-        });
+        resizeCanvases(250);
     }
     audios.forEach(function (_, i) {
         renderWaveform(i);
     });
 };
+
+function resizeCanvases(width) {
+    canvases.forEach(function(canvas) {
+        canvas.width = width;
+    });
+}
 
 const renderVisualizer = function (audioID) {
     const createAudioContextObj = function (sound) {
