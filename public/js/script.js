@@ -256,11 +256,11 @@ const renderVisualizer = function (audioID) {
     let barHeight;
     let barsCount;
     if (window.innerWidth <= 768) {
-        barsCount = 100;
+        barsCount = 50;
     } else {
-        barsCount = 350;
+        barsCount = 175;
     }
-    let barWidth = (WIDTH / barsCount);
+    let barWidth = ((WIDTH / barsCount) / 2) - 1;
 
     function renderFrame() {
         const freqDataMany = []; // reset array that holds the sound data for given number of audio sources
@@ -288,16 +288,23 @@ const renderVisualizer = function (audioID) {
             };
 
             let x = 0;
+            // let reverseX = WIDTH;
+            // let reverseBarWidth = barWidth * -1;
 
             for (let i = 0; i < (barsCount); i++) {
                 barHeight = (agg[i] * 0.4);
                 let y = (HEIGHT - barHeight);
+                let reverseBarWidth = barWidth * -1;
+                let reverseX = WIDTH - x;
                 drawBar(mainCanvasContext, x, y, barWidth, barHeight);
+                drawBar(mainCanvasContext, reverseX, y, reverseBarWidth, barHeight);
                 if (i < barsCount) {
                     x += barWidth + 1;
+                    // reverseX -= x; 
                 } else {
-                    barWidth += barWidth + 1;
+                    barWidth = barWidth + 1;
                     x += barWidth + 1;
+                    // reverseX -= x;
                 }
             }
             function drawBar(canvasContext, x, y, barWidth, barHeight) {
