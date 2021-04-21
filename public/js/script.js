@@ -217,7 +217,6 @@ const renderVisualizer = function (audioID) {
         return audioContextObj;
     };
     Object.keys(allSoundsById).forEach(function (id) {
-        // condition to avoid creating duplicate context. the visualizer won't break without it, but you will get a console error.
         if (!audioContextById[id]) {
             audioContextById[id] = createAudioContextObj(allSoundsById[id])
         }
@@ -256,11 +255,11 @@ const renderVisualizer = function (audioID) {
             for (let i = 0; i < (barsCount); i++) {
                 barHeight = (agg[i] * 0.4);
                 let y = (HEIGHT - barHeight);
-                let reverseBarWidth = barWidth * -1;
+                let reverseBarWidth = -barWidth;
                 let reverseX = WIDTH - x;
                 drawBar(mainCanvasContext, x, y, barWidth, barHeight);
                 drawBar(mainCanvasContext, reverseX, y, reverseBarWidth, barHeight);
-                x += barWidth + 1.002;
+                x += barWidth + 1;
             };
             function drawBar(canvasContext, x, y, barWidth, barHeight) {
                 let currentPos = audios[audioID].currentTime / audios[audioID].duration;
